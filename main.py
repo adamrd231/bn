@@ -36,9 +36,47 @@ class User(db.Model):
 
 @app.before_request
 def require_login():
-    allowed_routes = ['login', 'register']
+    allowed_routes = ['login', 'register', 'static']
     if request.endpoint not in allowed_routes and 'email' not in session:
         return redirect('/login')
+
+
+@app.route('/', methods=['POST', 'GET'])
+def index():
+
+
+    return render_template('index.html',
+          title="Bare Necessities, Bitch.",)
+
+#THIS ROUTE BRINGS THE USER TO THE HOME PAGE TO CHOOSE HOW TO FILTER THEIR TASKS.
+@app.route('/bn', methods=['POST', 'GET'])
+def todos():
+
+    #PASS A ATTRIBUTE OF THE TASK OBJECT INTO A VARIABLE USING A GET REQUEST, THEN USER filter_by
+    #QUADRANT1 
+    #QUADRANT2
+    #QUADRANT3
+    #QUADRANT4
+    #QUADRANT5
+    #QUADRANT6
+
+    owner = User.query.filter_by(email=session['email']).first()
+
+    if request.method == 'POST':
+        task_name = request.form['task']
+
+        new_task = Task(task_name, owner)
+        db.session.add(new_task)
+        db.session.commit()
+
+    tasks = Task.query.filter_by(completed=False, owner=owner).all()
+    completed_tasks = Task.query.filter_by(completed=True, owner=owner).all()
+
+    return render_template('bn.html',
+          title="Get Er' Done",
+          tasks=tasks,
+          completed_tasks=completed_tasks)
+
 
 
 
@@ -85,25 +123,6 @@ def register():
     return render_template('register.html')
 
 
-@app.route('/', methods=['POST', 'GET'])
-def index():
-
-    owner = User.query.filter_by(email=session['email']).first()
-
-    if request.method == 'POST':
-        task_name = request.form['task']
-
-        new_task = Task(task_name, owner)
-        db.session.add(new_task)
-        db.session.commit()
-
-    tasks = Task.query.filter_by(completed=False, owner=owner).all()
-    completed_tasks = Task.query.filter_by(completed=True, owner=owner).all()
-
-    return render_template('todos.html',
-          title="Get Er' Done",
-          tasks=tasks,
-          completed_tasks=completed_tasks)
 
 
 

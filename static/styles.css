@@ -1,0 +1,19 @@
+html {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.box {
+  width: 33%;
+  height: 15em;
+  background-color: #dedede;
+  border: .1em solid #333333;
+
+}
