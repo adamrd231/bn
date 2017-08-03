@@ -1,0 +1,45 @@
+{%   extends "base.html"   %}
+{%  block content  %}
+
+
+  <style> * {font-family: helvetica;} </style>
+
+  <h1>GET IT DONE</h1>
+  <form method='post'>
+    <label> New Task
+      <input type="text" name="task" />
+    </label>
+    <input type="submit" value="Add Task" />
+  </form>
+
+  <hr />
+
+  {% if tasks|length == 0  %}
+  <p>
+    No tasks yet...
+  </p>
+  {%  else  %}
+    <ul>
+      {%for task in tasks %}
+      <li>{{task.name}}
+        <form method="POST" action="/delete-task" style="display:inline-block;">
+            <input type="submit" value="Done!" />
+            <input type="hidden" name="task-id" value="{{task.id}}" />
+        </form>
+      </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+ <hr />
+  <h2>COMPLETED</h2>
+    <ul>
+      {% for task in completed_tasks %}
+      <li>
+          {{task.name}}
+      </li>
+      {% endfor %}
+    </ul>
+
+
+  {%  endblock  %}
