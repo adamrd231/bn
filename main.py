@@ -16,14 +16,17 @@ class Task(db.Model):
     name = db.Column(db.String(100))
     completed = db.Column(db.Boolean)
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    quad_id = db.Column(db.Integer, db.ForeignKey('quadrant.id'))
+    quad_id = db.Column(db.Integer)
+
     #TODO how to figure out to assign the quadrant clicked with the variable
 
-    def __init__(self, name, owner, quad):
+    def __init__(self, name, owner, quad_id):
         self.name = name
         self.completed = False
         self.owner = owner
-        self.quad = quad
+        self.quad_id = quad_id
+
+
 
 
 class User(db.Model):
@@ -36,9 +39,6 @@ class User(db.Model):
         self.email = email
         self.password = password
 
-class Quadrant(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    quadrant = db.relationship('Task', backref='quad')
 
 
 
@@ -54,6 +54,10 @@ def require_login():
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
+
+    quad_id = request.args.get('quad_id')
+    if (quad_id):
+        print(quad_id)
 
 
     return render_template('index.html',
@@ -73,10 +77,18 @@ def todos():
 
     owner = User.query.filter_by(email=session['email']).first()
 
+    quad_id = request.args.get('quad_id')
+    
+    if (quad_id):
+        print(quad_id)
+        return render_template('bn.html',
+                        title="Quadrant2")
+
     if request.method == 'POST':
         task_name = request.form['task']
 
-        new_task = Task(task_name, owner)
+
+        new_task = Task(task_name, owner, quad_id)
         db.session.add(new_task)
         db.session.commit()
 
