@@ -16,11 +16,14 @@ class Task(db.Model):
     name = db.Column(db.String(100))
     completed = db.Column(db.Boolean)
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    quad_id = db.Column(db.Integer, db.ForeignKey('quadrant.id'))
+    #TODO how to figure out to assign the quadrant clicked with the variable
 
-    def __init__(self, name, owner):
+    def __init__(self, name, owner, quad):
         self.name = name
         self.completed = False
         self.owner = owner
+        self.quad = quad
 
 
 class User(db.Model):
@@ -32,6 +35,14 @@ class User(db.Model):
     def __init__(self, email, password):
         self.email = email
         self.password = password
+
+class Quadrant(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    quadrant = db.relationship('Task', backref='quad')
+
+
+
+
 
 
 @app.before_request
@@ -53,7 +64,7 @@ def index():
 def todos():
 
     #PASS A ATTRIBUTE OF THE TASK OBJECT INTO A VARIABLE USING A GET REQUEST, THEN USER filter_by
-    #QUADRANT1 
+    #QUADRANT1
     #QUADRANT2
     #QUADRANT3
     #QUADRANT4
