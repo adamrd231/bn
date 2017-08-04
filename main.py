@@ -86,7 +86,8 @@ def bn():
 
         return render_template('bn.html',
                         title="Quadrant2",
-                        tasks=quad_tasks)
+                        tasks=quad_tasks,
+                        quad_id)
 
     return render_template('bn.html',
           title="Get Er' Done",
