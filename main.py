@@ -42,9 +42,6 @@ class User(db.Model):
 
 
 
-
-
-
 @app.before_request
 def require_login():
     allowed_routes = ['login', 'register', 'static']
@@ -65,35 +62,31 @@ def index():
 
 #THIS ROUTE BRINGS THE USER TO THE HOME PAGE TO CHOOSE HOW TO FILTER THEIR TASKS.
 @app.route('/bn', methods=['POST', 'GET'])
-def todos():
-
-    #PASS A ATTRIBUTE OF THE TASK OBJECT INTO A VARIABLE USING A GET REQUEST, THEN USER filter_by
-    #QUADRANT1
-    #QUADRANT2
-    #QUADRANT3
-    #QUADRANT4
-    #QUADRANT5
-    #QUADRANT6
+def bn():
 
     owner = User.query.filter_by(email=session['email']).first()
-
+    tasks = Task.query.filter_by(completed=False, owner=owner).all()
+    completed_tasks = Task.query.filter_by(completed=True, owner=owner).all()
     quad_id = request.args.get('quad_id')
-    
-    if (quad_id):
-        print(quad_id)
-        return render_template('bn.html',
-                        title="Quadrant2")
 
+    #Captures the new task and adds it to the databse
     if request.method == 'POST':
         task_name = request.form['task']
-
-
         new_task = Task(task_name, owner, quad_id)
         db.session.add(new_task)
         db.session.commit()
 
-    tasks = Task.query.filter_by(completed=False, owner=owner).all()
-    completed_tasks = Task.query.filter_by(completed=True, owner=owner).all()
+    #When clicking on a quadrant, this will assign the quad_id variable with a value of 1-6
+
+
+    #quadrant2 filter
+    if (quad_id):
+
+        quad_tasks = Task.query.filter_by(quad_id=quad_id).all()
+
+        return render_template('bn.html',
+                        title="Quadrant2",
+                        tasks=quad_tasks)
 
     return render_template('bn.html',
           title="Get Er' Done",
