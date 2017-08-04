@@ -1,12 +1,41 @@
+a {
+  color: #dedede;
+  border: .01em solid #dedede;
+  padding: 4%;
+  text-decoration: none;
+}
 
 html {
-  margin: none;
-  height:100vh;
+  margin-top: 3%;
+  margin-left: 3%;
+  margin-right: 3%;
+  background: #333333;
+  color: white;
   font-family: raleway;
 }
 
 .container {
-   min-height: 100vh;
+  height:98vh;
+}
+
+.header {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  background-color: #333333;
+  height: 3vh;
+  padding-bottom: 2%;
+}
+
+.navbar {
+  height: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.title {
+  color: black;
 }
 
 .flex {
@@ -23,15 +52,9 @@ html {
 }
 
 .box {
-  flex-grow: 1;
-  height: 20vh;
-  background-color: #dedede;
-  border: .1em solid #333333;
+  flex: 1;
+  height: 35vh;
+  background-color: white;
+  border: .01em solid #333333;
 
-}
-
-.header {
-  display: flex;
-  flex-direction: column;
-  background-color: #dedede;
 }

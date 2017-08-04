@@ -52,13 +52,11 @@ def require_login():
 @app.route('/', methods=['POST', 'GET'])
 def index():
 
-    quad_id = request.args.get('quad_id')
-    if (quad_id):
-        print(quad_id)
-
+    owner = User.query.filter_by(email=session['email']).first()
 
     return render_template('index.html',
-          title="Bare Necessities, Bitch.",)
+            owner=owner,
+            title="Bare Necessities, Bitch.",)
 
 #THIS ROUTE BRINGS THE USER TO THE HOME PAGE TO CHOOSE HOW TO FILTER THEIR TASKS.
 @app.route('/bn', methods=['POST', 'GET'])
@@ -82,19 +80,20 @@ def bn():
     #quadrant2 filter
     if (quad_id):
 
-        quad_tasks = Task.query.filter_by(quad_id=quad_id).all()
+        quad_tasks = Task.query.filter_by(quad_id=quad_id, owner=owner, completed=False).all()
+        completed_quad_tasks = Task.query.filter_by(quad_id=quad_id, owner=owner, completed=True).all()
 
         return render_template('bn.html',
                         title="Quadrant2",
                         tasks=quad_tasks,
-                        quad_id=quad_id)
+                        quad_id=quad_id,
+                        completed_tasks=completed_tasks,
+                        quad_tasks=quad_tasks)
 
     return render_template('bn.html',
           title="Get Er' Done",
           tasks=tasks,
           completed_tasks=completed_tasks)
-
-
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -140,9 +139,6 @@ def register():
     return render_template('register.html')
 
 
-
-
-
 @app.route('/delete-task', methods=['POST'])
 def delete_task():
 
@@ -151,8 +147,11 @@ def delete_task():
     task.completed = True
     db.session.add(task)
     db.session.commit()
+    url_id = task.quad_id
 
-    return redirect('/')
+    url = '/bn?quad_id=' + str(url_id)
+
+    return redirect(url)
 
 @app.route('/logout')
 def logout():
