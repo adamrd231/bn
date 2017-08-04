@@ -20,7 +20,7 @@
   {%  else  %}
     <ul>
       {%for task in tasks %}
-      <li>{{task.name}}
+      <li class="task_flex">{{task.name}}
         <form method="POST" action="/delete-task">
             <input class="top_input" id="task_input" type="submit" value="DONE" />
             <input id="task_input" type="hidden" name="task-id" value="{{task.id}}" />

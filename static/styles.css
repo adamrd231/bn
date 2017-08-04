@@ -99,10 +99,6 @@ table {
   color: lightblue;
 }
 
-.top_input {
-  margin-top: 2%;
-}
-
 #form {
   margin-top: 2%;
 }
@@ -122,4 +118,14 @@ table {
   box-shadow: none;
   border: none;
   border-bottom: .05em solid green;
+}
+
+.task_flex {
+  display: flex;
+  flex-direction: row;
+
+}
+
+#task_input {
+    margin-left: 20%;
 }
