@@ -1,8 +1,11 @@
 a {
   color: #dedede;
-  border: .01em solid #dedede;
   padding: 4%;
   text-decoration: none;
+}
+
+a:hover {
+  color: lightblue;
 }
 
 html {
@@ -15,7 +18,7 @@ html {
 }
 
 .container {
-  height:98vh;
+  height:97vh;
 }
 
 .header {
@@ -23,7 +26,7 @@ html {
   display: flex;
   flex-direction: column;
   background-color: #333333;
-  height: 3vh;
+  height: 4vh;
   padding-bottom: 2%;
 }
 
@@ -57,4 +60,9 @@ html {
   background-color: white;
   border: .01em solid #333333;
 
+}
+
+.home_task_container {
+  display: flex;
+  flex-direction: column;
 }

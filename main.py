@@ -52,10 +52,14 @@ def require_login():
 @app.route('/', methods=['POST', 'GET'])
 def index():
 
+    quad_id = request.args.get('quad_id')
     owner = User.query.filter_by(email=session['email']).first()
+    tasks = Task.query.filter_by(completed=False, owner=owner).all()
 
     return render_template('index.html',
             owner=owner,
+            tasks=tasks,
+            quad_id=quad_id,
             title="Bare Necessities, Bitch.",)
 
 #THIS ROUTE BRINGS THE USER TO THE HOME PAGE TO CHOOSE HOW TO FILTER THEIR TASKS.
