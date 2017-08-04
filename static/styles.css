@@ -1,19 +1,37 @@
+
 html {
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 5%;
+  margin: none;
+  height:100vh;
+  font-family: raleway;
+}
+
+.container {
+   min-height: 100vh;
 }
 
 .flex {
   display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.top_row, .bottom_row {
+  display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .box {
-  width: 33%;
-  height: 15em;
+  flex-grow: 1;
+  height: 20vh;
   background-color: #dedede;
   border: .1em solid #333333;
 
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  background-color: #dedede;
 }
