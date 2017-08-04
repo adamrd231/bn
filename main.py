@@ -55,10 +55,12 @@ def index():
     quad_id = request.args.get('quad_id')
     owner = User.query.filter_by(email=session['email']).first()
     tasks = Task.query.filter_by(completed=False, owner=owner).all()
+    completed_tasks = Task.query.filter_by(completed=True, owner=owner).all()
 
     return render_template('index.html',
             owner=owner,
             tasks=tasks,
+            completed_tasks=completed_tasks,
             quad_id=quad_id,
             title="Bare Necessities, Bitch.",)
 

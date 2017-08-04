@@ -48,6 +48,11 @@ h1 {
   padding-left: 5%;
 }
 
+h2 {
+  padding-left: 5%;
+  font-size: 1em;
+}
+
 .bn_tasks {
   padding-left: 5%;
 }
