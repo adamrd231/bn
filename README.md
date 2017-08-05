@@ -1,5 +1,5 @@
 <h1>BARE NECESSITY</h1>
-<h2>A Producitivity Tool</h2>
+A Producitivity Tool
 
 <h2>WireFrame | Design</h2>
 
