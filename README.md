@@ -1,4 +1,7 @@
-<h1>Bare Necessity is a tool to help organize tasks. </h1>
+<h1>BARE NECESSITY</h1>
+<h2>A Producitivity Tool</h2>
+
+<h2>WireFrame | Design</h2>
 
 Login - Home - Quadrant 1 (Example, daily tasks)
              - Quadrant 2 (Example, weekly tasks)
