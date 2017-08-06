@@ -7,19 +7,15 @@ A Producitivity Tool
 <p>Use the blank space in each quadrant to write down the things you need to remember, or things that you do not need to be thinking about right now.</p>
 
 <ul>
-  <li>Sign into your account and fill out your BN</li>
+  <li>Sign into your account at <a href="http://barenecessity.pythonanywhere.com">barenecessity.pythonanywhere.com</a> and fill out your BN</li>
   <li>Print your Bare Necessity</li>
-  <img src="http://rdconcepts.design/wp-content/uploads/2017/08/Adams-BN-01.png/>
-  <li></li>
+  <li>Carry With you to capture awesome ideas</li>
 </ul>
 
+<img src="http://rdconcepts.design/wp-content/uploads/2017/08/Adams-BN-02.png"/>
+
 <hr>
-<img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-01.png"/>
-<img src="http://rdconcepts.design/wp-content/uploads/2017/08/icons-02.png"/>
-<img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-04.png"/>
-<img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-05.png"/>
-<img src="http://rdconcepts.design/wp-content/uploads/2017/08/icons-03.png"/>
-<hr>
+
 
 <h4>GETTING STARTED</h4>
 There is nothing to install, our web application gives you the freedom to print your BN anywhere.
@@ -41,6 +37,12 @@ We are currently not taking any contributions at this time, please check back fo
 <h6>Tim Ferriss | Author/Podcaster/Teacher</h6>
 <h6>Marie Kondo | The Life Changing Magic of Tidying Up</h6>
 <h6>5-S Methodology</h6>
+<hr>
+<img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-01.png"/>
+<img src="http://rdconcepts.design/wp-content/uploads/2017/08/icons-02.png"/>
+<img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-04.png"/>
+<img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-05.png"/>
+<img src="http://rdconcepts.design/wp-content/uploads/2017/08/icons-03.png"/>
 <hr>
 <h4>HOW TO USE THE APP</h4>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/BareReadMe.png"/>
