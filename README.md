@@ -40,9 +40,10 @@ We are currently not taking any contributions at this time, please check back fo
 <hr>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-01.png"/>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/icons-02.png"/>
-<img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-04.png"/>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-05.png"/>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/icons-03.png"/>
+<img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-04.png"/>
+
 <hr>
 <h4>HOW TO USE THE APP</h4>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/BareReadMe.png"/>
