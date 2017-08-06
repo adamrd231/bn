@@ -53,6 +53,7 @@ Email justin.rdconcepts@gmail.com in order to register for an account, due  to l
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-04.png"/>
 
 <hr>
+<h2>MVP Mobile First Design | Web Application</h2>
 <h4>HOW TO USE THE APP</h4>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/BareReadMe.png"/>
 
