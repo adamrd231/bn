@@ -1,5 +1,5 @@
 <h1>BARE NECESSITY</h1>
-A Producitivity Tool
+A Productivity Tool
 <hr>
 <h4>WHY PAPER?</h4>
 <p>Too long have we done what the crowd tells us to do instead of doing what we know to feel write. With the bare necessity, start remembering things in a way that we all know is already powerful, writing down and crossing off our tasks.</p>
