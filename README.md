@@ -3,8 +3,6 @@ A Producitivity Tool
 
 <h5>Full Stack Python Web Application running Flask, HTML, CSS, MySQL</h5>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-01.png"/>
-<img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-02.png"/>
-<img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-03.png"/>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-04.png"/>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-05.png"/>
 
