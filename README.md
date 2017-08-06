@@ -27,12 +27,12 @@ Email justin.rdconcepts@gmail.com in order to register for an account, due  to l
 <hr>
 
 <h4>CONTRIBUTORS</h4>
-Please check back for a list of upcoming features.
+<h6>Please check back for a list of upcoming features.</h6>
 <ol>
   <li>Fork it (https://github.com/yourname/yourproject/rickAndMortyBranch(exampleForkName)</li>
   <li>Create your feature branch (git checkout -b feature/battleAxePocketMorty)</li>
   <li>Commit your changes (git commit -am 'Add some battleAxePocketMorty')</li>
-  <li>Push to the branch (git push origin feature/battleAxePocketMorty)</li
+  <li>Push to the branch (git push origin feature/battleAxePocketMorty)</li>
   <li>Create a new Pull Request</li>
 </ol>
 
