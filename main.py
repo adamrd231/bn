@@ -1,5 +1,6 @@
-from flask import Flask, request, redirect, render_template, session, flash
+from flask import Flask, request, redirect, render_template, session, flash, make_response
 from flask_sqlalchemy import SQLAlchemy
+import pdfkit
 
 
 app = Flask(__name__)
@@ -44,9 +45,42 @@ class User(db.Model):
 
 @app.before_request
 def require_login():
-    allowed_routes = ['login', 'register', 'static']
+    allowed_routes = ['login', 'register', 'static', 'pdf_template', '/']
     if request.endpoint not in allowed_routes and 'email' not in session:
         return redirect('/login')
+
+
+
+#TODO MAKE THIS BITCH PRINT
+@app.route('/<name>/<location>')
+def pdf_template(name, location):
+    rendered = render_template('pdf_template.html', name=name, location=location)
+    pdf = pdfkit.from_string(rendered, False)
+
+    response = make_response(pdf)
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = 'inline'
+    return response
+
+@app.route('/bn', methods=['POST', 'GET'])
+def pdf_templates():
+    rendered = render_template('bn.html')
+    pdf = pdfkit.from_string(rendered, False)
+    response = make_response(pdf)
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = 'inline'
+    return response
+
+@app.route('/pdf_template')
+def pdf_templatess():
+    pdf = pdfkit.from_url('http://www.google.com', False)
+    response = make_response(pdf)
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = 'inline'
+    return pdf
+
+
+
 
 
 @app.route('/', methods=['POST', 'GET'])
@@ -61,7 +95,6 @@ def index():
             owner=owner,
             tasks=tasks,
             completed_tasks=completed_tasks,
-            quad_id=quad_id,
             title="Bare Necessities, Bitch.",)
 
 #THIS ROUTE BRINGS THE USER TO THE HOME PAGE TO CHOOSE HOW TO FILTER THEIR TASKS.
