@@ -2,7 +2,7 @@
 A Producitivity Tool
 
 <h4>Full Stack Python Web Application running Flask, HTML, CSS, MySQL</h4>
-<hr size="1px">
+<hr size="1">
 
 <h4>GETTING STARTED</h4>
 There is nothing to install, our web application gives you the freedom to print your BN anywhere.
