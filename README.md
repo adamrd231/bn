@@ -27,7 +27,18 @@ Email justin.rdconcepts@gmail.com in order to register for an account, due  to l
 <hr>
 
 <h4>CONTRIBUTORS</h4>
-We are currently not taking any contributions at this time, please check back for a list of upcoming features.
+Please check back for a list of upcoming features.
+<ol>
+  <li>Fork it (https://github.com/yourname/yourproject/rickAndMortyBranch(exampleForkName)</li>
+  <li>Create your feature branch (git checkout -b feature/battleAxePocketMorty)</li>
+  <li>Commit your changes (git commit -am 'Add some battleAxePocketMorty')</li>
+  <li>Push to the branch (git push origin feature/battleAxePocketMorty)</li
+  <li>Create a new Pull Request</li>
+</ol>
+
+
+
+Create a new Pull Request
 <hr>
 <h4>AUTHORS</h4>
 <h6>Adam Reed | adam.rdconcepts@gmail.com</h6>
