@@ -98,6 +98,7 @@ def bn():
 
         return render_template('bn.html',
                         title="Quadrant2",
+                        owner=owner,
                         tasks=quad_tasks,
                         quad_id=quad_id,
                         completed_quad_tasks=completed_quad_tasks,)

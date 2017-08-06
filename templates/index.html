@@ -1,87 +1,99 @@
 {%   extends "base.html"   %}
 {%  block content  %}
 
-
-
-<h1>Hello, {{owner.email}}</h1>
-
 <!-- START THE MAIN FLEX BOX CONTAINER -->
 <div class="flex">
   <!--  TOP THREE ROWS OF THE APP -->
   <div class="top_row">
-    <a class="box" href="http://127.0.0.1:5000/bn?quad_id=1"><div class="title">
-      <div class="home_task_container">
-        <!-- THIS LOGIC SHOWS ALL THE TASKS THAT HAVE A MATCHING QUAD_ID -->
-        <!-- FOR LOOP TO RUN THROUGH TASKS, CHECK IF MATCH -->
-        {%for task in tasks %}
-          {% if task.quad_id == 1  %}
-            <div class="home_tasks">{{task.name}}</div>
-          {%endif%}
-        {%endfor%}
-      </div>
-    </div></a>
+
+        <div class="home_task_container">
+          <a class="box" href="http://127.0.0.1:5000/bn?quad_id=1">
+          <!-- THIS LOGIC SHOWS ALL THE TASKS THAT HAVE A MATCHING QUAD_ID -->
+          <!-- FOR LOOP TO RUN THROUGH TASKS, CHECK IF MATCH -->
+          {%for task in tasks %}
+            {% if task.quad_id == 1  %}
+              <div class="home_tasks">{{task.name}}</div>
+            {%endif%}
+          {%endfor%}
+          </a>
+        </div>
 
 
-    <a class="box" href="http://127.0.0.1:5000/bn?quad_id=2"><div class="title">
-      <div class="home_task_container">
 
-      {%for task in tasks %}
-        {% if task.quad_id == 2  %}
-          <div class="home_tasks">{{task.name}}</div>
-        {%endif%}
-      {%endfor%}
+        <div class="home_task_container">
+          <a class="box" href="http://127.0.0.1:5000/bn?quad_id=1">
+          <!-- THIS LOGIC SHOWS ALL THE TASKS THAT HAVE A MATCHING QUAD_ID -->
+          <!-- FOR LOOP TO RUN THROUGH TASKS, CHECK IF MATCH -->
+          {%for task in tasks %}
+            {% if task.quad_id == 2  %}
+              <div class="home_tasks">{{task.name}}</div>
+            {%endif%}
+          {%endfor%}
+          </a>
+        </div>
 
-      </div>
-      </div></a>
+        <div class="home_task_container">
+          <a class="box" href="http://127.0.0.1:5000/bn?quad_id=1">
+          <!-- THIS LOGIC SHOWS ALL THE TASKS THAT HAVE A MATCHING QUAD_ID -->
+          <!-- FOR LOOP TO RUN THROUGH TASKS, CHECK IF MATCH -->
+          {%for task in tasks %}
+            {% if task.quad_id == 3  %}
+              <div class="home_tasks">{{task.name}}</div>
+            {%endif%}
+          {%endfor%}
+          </a>
+        </div>
 
-    <a class="box" href="http://127.0.0.1:5000/bn?quad_id=3"><div class="title">
-      <div class="home_task_container">
-
-      {%for task in tasks %}
-        {% if task.quad_id == 3  %}
-          <div class="home_tasks">{{task.name}}</div>
-        {%endif%}
-      {%endfor%}
-
-      </div>
-    </div></a>
   </div>
-  <div class="bottom_row">
-    <a class="box" href="http://127.0.0.1:5000/bn?quad_id=4"><div class="title">
-      <div class="home_task_container">
 
+
+  <div class="bottom_row">
+
+    <div class="home_task_container">
+      <a class="box" href="http://127.0.0.1:5000/bn?quad_id=1">
+      <!-- THIS LOGIC SHOWS ALL THE TASKS THAT HAVE A MATCHING QUAD_ID -->
+      <!-- FOR LOOP TO RUN THROUGH TASKS, CHECK IF MATCH -->
       {%for task in tasks %}
         {% if task.quad_id == 4  %}
           <div class="home_tasks">{{task.name}}</div>
         {%endif%}
       {%endfor%}
+      </a>
+    </div>
 
-      </div>
-    </div></a>
-    <a class="box" href="http://127.0.0.1:5000/bn?quad_id=5"><div class="title">
-      <div class="home_task_container">
 
+
+    <div class="home_task_container">
+      <a class="box" href="http://127.0.0.1:5000/bn?quad_id=1">
+      <!-- THIS LOGIC SHOWS ALL THE TASKS THAT HAVE A MATCHING QUAD_ID -->
+      <!-- FOR LOOP TO RUN THROUGH TASKS, CHECK IF MATCH -->
       {%for task in tasks %}
         {% if task.quad_id == 5  %}
           <div class="home_tasks">{{task.name}}</div>
         {%endif%}
       {%endfor%}
+      </a>
+    </div>
 
-      </div>
-    </div></a>
-    <a class="box" href="http://127.0.0.1:5000/bn?quad_id=6"><div class="title">
-      <div class="home_task_container">
-
+    <div class="home_task_container">
+      <a class="box" href="http://127.0.0.1:5000/bn?quad_id=1">
+      <!-- THIS LOGIC SHOWS ALL THE TASKS THAT HAVE A MATCHING QUAD_ID -->
+      <!-- FOR LOOP TO RUN THROUGH TASKS, CHECK IF MATCH -->
       {%for task in tasks %}
         {% if task.quad_id == 6  %}
           <div class="home_tasks">{{task.name}}</div>
         {%endif%}
       {%endfor%}
-
-      </div>
-    </div></a>
+      </a>
+    </div>
   </div>
 
+    <form id="form" action="/login" method="post">
+      <input id="download_button" type="submit" value="Download">
+    </form>
+
 </div>
+
+
 
 {%  endblock  %}

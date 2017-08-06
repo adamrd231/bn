@@ -9,20 +9,20 @@
     <div class="header">
       <div>
         Bare Necessities3.0
-
       </div>
       <div>
-        {{timestamp}} - <a id="feedback_button" href="mailto:adam.rdconcepts@gmail.com">Leave Feedback</a>
+        {{timestamp}} - <a id="feedback_button" href="mailto:justin.rdconcepts@gmail.com">Leave Feedback</a>
       </div>
     </div>
+    <div class="navbar">
+      <div id="nav_button"><a href="http://127.0.0.1:5000/">HOME</a></div>
+      <div id="nav_button"><a href="/logout">Logout</a></div>
+    </div>
+    <div>
+      <h1>Hello, {{owner.email}}</h1>
+    </div>
+
     <div class="container">
-
-      <div class="navbar">
-        <div id="nav_button"><a href="http://127.0.0.1:5000/">HOME</a></div>
-        <div id="nav_button"><a href="/logout">Logout</a></div>
-      </div>
-
-
 
     {% with messages = get_flashed_messages(with_categories=True) %}
         <ul>
@@ -36,5 +36,6 @@
     {%  block content  %}
     {%  endblock  %}
     </div>
+
   </body>
 </html>
