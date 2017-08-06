@@ -1,7 +1,7 @@
 <h1>BARE NECESSITY</h1>
 A Producitivity Tool
 
-<h4 style="border-bottom: 1px solid #dedede">Full Stack Python Web Application running Flask, HTML, CSS, MySQL</h4>
+<h4 style="border-bottom: 1px solid #dedede;">Full Stack Python Web Application running Flask, HTML, CSS, MySQL</h4>
 
 <h4>GETTING STARTED</h4>
 There is nothing to install, our web application gives you the freedom to print your BN anywhere.
