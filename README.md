@@ -19,12 +19,12 @@ We are currently not taking any contributions at this time, please check back fo
 <h4>AUTHORS</h4>
 <h6>Adam Reed | adam.rdconcepts@gmail.com</h6>
 <h6>Justin Reed | justin.rdconcepts@gmail.com</h6>
-<br>
+<hr>
 <h4>INSPIRATION</h4>
 <h6>Tim Ferriss | Author/Podcaster/Teacher</h6>
 <h6>Marie Kondo | The Life Changing Magic of Tidying Up</h6>
 <h6>5-S Methodology</h6>
-<br/>
+<hr>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/BareReadMe.png"/>
 
 
