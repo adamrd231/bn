@@ -60,6 +60,14 @@ h2 {
 
 .bn_tasks {
   padding-left: 5%;
+  width: 50em;
+  margin: auto;
+}
+
+#bn_task_input {
+  margin-left: 2%;
+    width: 60%;
+
 }
 
 .title {
@@ -125,7 +133,7 @@ table {
   border: .01em solid lightgreen;
 }
 
-#input {
+#input, #bn_task_input {
 
   color: white;
   width: 80%;
@@ -147,15 +155,35 @@ table {
   border: none;
 }
 
+#task_id {
+  margin-right: 2%;
+}
+
 
 .task_flex {
   display: flex;
   flex-direction: row;
-
+  justify-content: flex-end;
 }
 
 #task_input {
-    margin-left: 20%;
+  padding: 3%;
+  margin-top: 3%;
+  width: 100%;
+  color: white;
+  font-size: 1.6em;
+  background: #333333;
+  box-shadow: none;
+  border: none;
+  border: .05em solid white;
+}
+
+#done_button {
+  color: white;
+  background: #333333;
+  box-shadow: none;
+  border: none;
+  border: .05em solid white;
 }
 
 #download_button {
