@@ -1,7 +1,7 @@
 <h1>BARE NECESSITY</h1>
 A Producitivity Tool
 
-<h4>Full Stack Python Web Application running Flask, HTML, CSS, MySQL</h4>
+<h5>Full Stack Python Web Application running Flask, HTML, CSS, MySQL</h5>
 <hr>
 
 <h4>GETTING STARTED</h4>
@@ -14,9 +14,17 @@ in order to log in head to the url
 <hr>
 
 <h4>CONTRIBUTORS</h4>
-Adam Reed | adam.rdconcepts@gmail.com
-Justin Reed | justin.rdconcepts@gmail.com
+We are currently not taking any contributions at this time, please check back for a list of upcoming features.
+<hr>
+<h4>AUTHORS</h4>
+<h6>Adam Reed | adam.rdconcepts@gmail.com</h6>
+<h6>Justin Reed | justin.rdconcepts@gmail.com</h6>
 <br>
+<h4>INSPIRATION</h4>
+<h6>Tim Ferriss | Author/Podcaster/Teacher</h6>
+<h6>Marie Kondo | The Life Changing Magic of Tidying Up</h6>
+<h6>5-S Methodology</h6>
+<br/>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/BareReadMe.png"/>
 
 
