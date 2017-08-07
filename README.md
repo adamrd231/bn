@@ -1,5 +1,5 @@
 <h1>BARE NECESSITY</h1>
-<a id="why_paper" href="#why_paper aria-hidden="true"</a>
+<a id="why_paper" href="#-why_paper aria-hidden="true"></a>
 A Productivity Tool
 <hr>
 <h4>WHY PAPER?</h4>
@@ -19,9 +19,12 @@ A Productivity Tool
 
 <h4>TABLE OF CONTENTS</h4>
 <ul>
-  <li><a href="#why_paper>Why Paper?</a></li>  
+  <li>
+    <a href="#-why_paper>Why Paper?</a>
+  </li>  
 </ul>
 
+<hr>
 <h4>GETTING STARTED</h4>
 There is nothing to install, our web application gives you the freedom to print your BN anywhere.
 Email justin.rdconcepts@gmail.com in order to register for an account, due  to limited server space accounts are limited.
