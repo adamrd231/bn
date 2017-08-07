@@ -16,12 +16,7 @@ A Productivity Tool
 
 <hr>
 
-<h4>TABLE OF CONTENTS</h4>
-<ul>
-  <li>
-    <a href="#-why_paper>Why Paper?</a>
-  </li>  
-</ul>
+
 
 <hr/>
 <h4>GETTING STARTED</h4>
