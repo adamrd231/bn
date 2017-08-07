@@ -12,7 +12,6 @@ A Productivity Tool
   <li>Print your Bare Necessity</li>
   <li>Carry With you to capture awesome ideas</li>
 </ul>
-
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/Adams-BN-02.png"/>
 
 <hr>
@@ -24,7 +23,7 @@ A Productivity Tool
   </li>  
 </ul>
 
-<hr>
+<hr/>
 <h4>GETTING STARTED</h4>
 There is nothing to install, our web application gives you the freedom to print your BN anywhere.
 Email justin.rdconcepts@gmail.com in order to register for an account, due  to limited server space accounts are limited.
@@ -32,7 +31,7 @@ Email justin.rdconcepts@gmail.com in order to register for an account, due  to l
 // THE BN IS NOT FUNCTIONAL AT THIS TIME
 (in order to log in head to the url)
 <pre>barenecessity.pythonanywhere.com</pre>
-<hr>
+<hr/>
 
 <h4>CONTRIBUTORS</h4>
 <h6>Please check back for a list of upcoming features.</h6>
