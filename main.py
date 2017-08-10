@@ -62,22 +62,40 @@ def pdf_template(name, location):
     response.headers['Content-Disposition'] = 'inline'
     return response
 
-@app.route('/bn', methods=['POST', 'GET'])
+#@app.route('/pdf_template', methods=['POST', 'GET'])
+#def pdf_templates():
+#    options = {
+#        'page-size' : 'Letter',
+#        'margin-top' : '0.75in',
+#        'margin-right' : '0.75',
+#        'margin-bottom' : '0.75',
+#        'margin-left' : '0.75',
+
+#    }
+#    rendered = render_template('pdf_template.html')
+#    pdf = pdfkit.from_string(rendered, False, options=options)
+#    response = make_response(pdf)
+#    response.headers['Content-Type'] = 'application/pdf'
+#    response.headers['Content-Disposition'] = 'inline'
+#    return response
+
+@app.route('/pdf_template', methods=['POST', 'GET'])
 def pdf_templates():
-    rendered = render_template('bn.html')
-    pdf = pdfkit.from_string(rendered, False)
+    options = {
+        'page-size' : 'Letter',
+    }
+    css = 'static/styles.css'
+    pdf = pdfkit.from_file('templates/login.html', False, options=options, css=css)
+
+
     response = make_response(pdf)
     response.headers['Content-Type'] = 'application/pdf'
     response.headers['Content-Disposition'] = 'inline'
+
     return response
 
-@app.route('/pdf_template')
-def pdf_templatess():
-    pdf = pdfkit.from_url('http://www.google.com', False)
-    response = make_response(pdf)
-    response.headers['Content-Type'] = 'application/pdf'
-    response.headers['Content-Disposition'] = 'inline'
-    return pdf
+
+
 
 
 
