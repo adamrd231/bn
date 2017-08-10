@@ -58,13 +58,23 @@ def require_login():
 
 @app.route('/pdf_template', methods=['POST', 'GET'])
 def pdf_templates():
+
+    owner = User.query.filter_by(email=session['email']).first()
+
     options = {
         'page-size' : 'Letter',
+        'margin-top': '0in',
+        'margin-right': '0in',
+        'margin-bottom': '0in',
+        'margin-left': '0in',
     }
     css = 'static/styles.css'
-    pdf = pdfkit.from_file('templates/index.html', False, options=options, css=css)
 
+    rendered = render_template('pdf_template.html',
+                                owner = owner,
+                                )
 
+    pdf = pdfkit.from_string(rendered, False, options=options, css=css)
     response = make_response(pdf)
     response.headers['Content-Type'] = 'application/pdf'
     response.headers['Content-Disposition'] = 'inline'
