@@ -16,6 +16,14 @@
         </div>
       </div>
 
+      {% with messages = get_flashed_messages(with_categories=True) %}
+          <ul>
+            {% for category,message in messages %}
+              <li class="{{category}}">{{message}}</li>
+            {% endfor %}
+          </ul>
+      {% endwith %}
+
 
 <div>
 <form id="form" action="/login" method="post">
@@ -23,7 +31,7 @@
         <tr>
 
             <td>
-                <input id="input" name="email" type="email" placeholder="Please enter your email" value="{{ email }}">
+                <input id="input" name="email" type="email" placeholder="Please enter your email" value="{{ check_password }}">
             </td>
         </tr>
         <tr>

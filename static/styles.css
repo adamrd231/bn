@@ -1,15 +1,6 @@
-a {
-  color: #dedede;
-  padding: 4%;
-  text-decoration: none;
-}
-
-a:hover {
-  color: lightblue;
-}
-
 body {
   margin: 0;
+  width: 100%;
 }
 
 html {
@@ -17,11 +8,24 @@ html {
   color: white;
   font-family: raleway;
   width: 100%;
+  height:97vh;
 }
 
+a {
+  color: #dedede;
+  padding: 4%;
+  text-decoration: none;
+}
+
+
+a:hover {
+  color: lightblue;
+}
+
+
 .container {
-  height:97vh;
-  width: 100%;
+
+  flex:1;
 }
 
 .header {
@@ -32,7 +36,7 @@ html {
   background-color: white;
   padding-top:2%;
   padding-bottom: 2%;
-  width: 100%
+  flex:1;
 }
 
 .navbar {
@@ -42,6 +46,7 @@ html {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex:1;
 }
 
 h1 {
@@ -55,6 +60,14 @@ h2 {
 
 .bn_tasks {
   padding-left: 5%;
+  width: 50em;
+  margin: auto;
+}
+
+#bn_task_input {
+  margin-left: 2%;
+    width: 60%;
+
 }
 
 .title {
@@ -85,11 +98,14 @@ h2 {
 .home_task_container {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  background-color: white;
 }
 
 table {
   width: 100%
 }
+
 
 #nav_button {
   margin-top: 2%;
@@ -111,26 +127,76 @@ table {
 #input_button {
   margin-top: 2%;
   padding: 1%;
+  margin-left: 5%;
+  color: #dedede;
+  background-color: #333333;
+  border: .01em solid lightgreen;
 }
 
-#input {
+#input, #bn_task_input {
+
   color: white;
   width: 80%;
   padding: .5%;
-  margin: auto;
+  margin-left: 5%;
   font-size: 1.6em;
   background: #333333;
   box-shadow: none;
   border: none;
-  border-bottom: .05em solid green;
+  border-bottom: .05em solid lightgreen;
 }
+
+#input::placeholder {
+  color: #dedede;
+}
+
+#input:focus {
+  box-shadow: none;
+  border: none;
+}
+
+#task_id {
+  margin-right: 2%;
+}
+
 
 .task_flex {
   display: flex;
   flex-direction: row;
-
+  justify-content: flex-end;
 }
 
 #task_input {
-    margin-left: 20%;
+  padding: 3%;
+  margin-top: 3%;
+  width: 100%;
+  color: white;
+  font-size: 1.6em;
+  background: #333333;
+  box-shadow: none;
+  border: none;
+  border: .05em solid white;
+}
+
+#done_button {
+  color: white;
+  background: #333333;
+  box-shadow: none;
+  border: none;
+  border: .05em solid white;
+}
+
+#download_button {
+  color: white;
+  background: #333333;
+  box-shadow: none;
+  border: none;
+  border: .05em solid #dedede;
+  padding: 3%;
+  width: 20%;
+  margin-right: 40%;
+  margin-left: 40%;
+  margin-bottom: 2%;
+  text-align: center;
+  font-size: 1em;
 }
