@@ -85,7 +85,7 @@ def pdf_templates():
         'page-size' : 'Letter',
     }
     css = 'static/styles.css'
-    pdf = pdfkit.from_file('templates/login.html', False, options=options, css=css)
+    pdf = pdfkit.from_file('templates/index.html', False, options=options, css=css)
 
 
     response = make_response(pdf)
