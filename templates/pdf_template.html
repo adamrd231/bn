@@ -1,72 +1,101 @@
-<div class="flex">
-  <div class="top_row">
-    <a class="box" href="http://127.0.0.1:5000/bn?quad_id=1"><div class="title">
-      <div class="home_task_container">
-        {%for task in tasks %}
-          {% if task.quad_id == 1  %}
-            <div class="home_tasks">{{task.name}}</div>
-          {%endif%}
-        {%endfor%}
-      </div>
-    </div></a>
-    <!-- USE SOMETHING LIKE THIS TO SEND THE OBJECT ATTRIBUTE TO BE COLLECTED AS A VARIABLE -->
+<table style="width:100%;">
+  <tr>
 
-    <a class="box" href="http://127.0.0.1:5000/bn?quad_id=2"><div class="title">
-      <div class="home_task_container">
+    <!-- Quadrant 1 -->
+    <td style="display: inline-block;
+        font-size: 9em;
+        font-family: helvetica;
+        width: 30%;
+        border-right: 1px solid #333333;
+        border-bottom: 1px solid #333333;">
+            <div style='height: 50%; padding: 2%;'>
+              {%for task in tasks %}
+                {% if task.quad_id == 1  %}
+                  <div>{{task.name}}</div>
+                {%endif%}
+              {%endfor%}
+            </div>
+    </td>
 
-      {%for task in tasks %}
-        {% if task.quad_id == 2  %}
-          <div class="home_tasks">{{task.name}}</div>
-        {%endif%}
-      {%endfor%}
+    <!-- Quadrant 2 -->
+    <td style="display: inline-block;
+        font-size: 9em;
+        font-family: helvetica;
+        width: 30%;
+        border-bottom: 1px solid #333333;">
+            <div style='padding: 2%;'>
+              {%for task in tasks %}
+                {% if task.quad_id == 2  %}
+                  <div>{{task.name}}</div>
+                {%endif%}
+              {%endfor%}
+            </div>
+    </td>
+    <!-- Quadrant 3 -->
+    <td style="display: inline-block;
+        font-size: 9em;
+        font-family: helvetica;
+        width: 30%;
+        border-left: 1px solid #333333;
+        border-bottom: 1px solid #333333;">
+            <div style='padding: 2%;'>
+              {%for task in tasks %}
+                {% if task.quad_id == 3  %}
+                  <div>{{task.name}}</div>
+                {%endif%}
+              {%endfor%}
+            </div>
+    </td>
+  </tr>
+  <tr>
 
-      </div>
-      </div></a>
+    <!-- Quadrant 4 -->
+    <td style="display: inline-block;
+        font-size: 9em;
+        font-family: helvetica;
+        width: 30%;
+        border-right: 1px solid #333333;
+        border-top: 1px solid #333333;">
+          <div style='padding: 2%;'>
+            {%for task in tasks %}
+              {% if task.quad_id == 4  %}
+                <div>{{task.name}}</div>
+              {%endif%}
+            {%endfor%}
+          </div>
+    </td>
 
-    <a class="box" href="http://127.0.0.1:5000/bn?quad_id=3"><div class="title">
-      <div class="home_task_container">
+    <!-- Quadrant 5 -->
+    <td style="display: inline-block;
+      font-size: 9em;
+      font-family: helvetica;
+      width: 30%;
+      border-top: 1px solid #333333;">
+        <div style='padding: 2%;'>
+            {%for task in tasks %}
+              {% if task.quad_id == 5  %}
+                <div>{{task.name}}</div>
+              {%endif%}
+            {%endfor%}
+        </div>
 
-      {%for task in tasks %}
-        {% if task.quad_id == 3  %}
-          <div class="home_tasks">{{task.name}}</div>
-        {%endif%}
-      {%endfor%}
 
-      </div>
-    </div></a>
-  </div>
-  <div class="bottom_row">
-    <a class="box" href="http://127.0.0.1:5000/bn?quad_id=4"><div class="title">
-      <div class="home_task_container">
+    </td>
+    <!-- Quadrant 6 -->
+    <td style="display: inline-block;
+        font-size: 9em;
+        font-family: helvetica;
+        width: 30%;
+        border-left: 1px solid #333333;
+        border-top: 1px solid #333333;">
+          <div style='padding: 2%;'>
+            {%for task in tasks %}
+              {% if task.quad_id == 6  %}
+                <div>{{task.name}}</div>
+              {%endif%}
+            {%endfor%}
+          </div>
+    </td>
 
-      {%for task in tasks %}
-        {% if task.quad_id == 4  %}
-          <div class="home_tasks">{{task.name}}</div>
-        {%endif%}
-      {%endfor%}
-
-      </div>
-    </div></a>
-    <a class="box" href="http://127.0.0.1:5000/bn?quad_id=5"><div class="title">
-      <div class="home_task_container">
-
-      {%for task in tasks %}
-        {% if task.quad_id == 5  %}
-          <div class="home_tasks">{{task.name}}</div>
-        {%endif%}
-      {%endfor%}
-
-      </div>
-    </div></a>
-    <a class="box" href="http://127.0.0.1:5000/bn?quad_id=6"><div class="title">
-      <div class="home_task_container">
-
-      {%for task in tasks %}
-        {% if task.quad_id == 6  %}
-          <div class="home_tasks">{{task.name}}</div>
-        {%endif%}
-      {%endfor%}
-
-      </div>
-    </div></a>
-  </div>
+  </tr>
+</table>

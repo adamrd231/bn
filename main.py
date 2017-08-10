@@ -60,6 +60,7 @@ def require_login():
 def pdf_templates():
 
     owner = User.query.filter_by(email=session['email']).first()
+    tasks = Task.query.filter_by(completed=False, owner=owner).all()
 
     options = {
         'page-size' : 'Letter',
@@ -72,9 +73,10 @@ def pdf_templates():
 
     rendered = render_template('pdf_template.html',
                                 owner = owner,
+                                tasks=tasks,
                                 )
 
-    pdf = pdfkit.from_string(rendered, False, options=options, css=css)
+    pdf = pdfkit.from_string(rendered, False, options=options)
     response = make_response(pdf)
     response.headers['Content-Type'] = 'application/pdf'
     response.headers['Content-Disposition'] = 'inline'
