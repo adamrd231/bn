@@ -1,7 +1,9 @@
-from flask import Flask, request, redirect, render_template, session, flash
+from flask import Flask, request, redirect, render_template, session, flash, make_response
 from flask_sqlalchemy import SQLAlchemy
+import pdfkit
 from datetime import datetime
 from momentjs import momentjs
+
 
 
 app = Flask(__name__)
@@ -48,9 +50,27 @@ app.jinja_env.globals['momentjs'] = momentjs
 #JUSTIN CURRENTLY CREATES ACCOUNTS, NEW USERS ARE MADE BY HIM
 @app.before_request
 def require_login():
-    allowed_routes = ['login', 'static', 'register']
+    allowed_routes = ['login', 'register', 'static', 'pdf_template', '/']
     if request.endpoint not in allowed_routes and 'email' not in session:
         return redirect('/login')
+
+
+
+@app.route('/pdf_template', methods=['POST', 'GET'])
+def pdf_templates():
+    options = {
+        'page-size' : 'Letter',
+    }
+    css = 'static/styles.css'
+    pdf = pdfkit.from_file('templates/index.html', False, options=options, css=css)
+
+
+    response = make_response(pdf)
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = 'inline'
+
+    return response
+
 
 
 #HOME PAGE ROUTE, SHOWS THE DASHBOARD FOR THE TASK MANAGEMENT APP
@@ -67,7 +87,6 @@ def index():
             owner=owner,
             tasks=tasks,
             completed_tasks=completed_tasks,
-            quad_id=quad_id,
             title="Bare Necessities, Bitch.",)
 
 
