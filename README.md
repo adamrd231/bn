@@ -35,11 +35,9 @@ Email justin.rdconcepts@gmail.com in order to register for an account, due  to l
   <li>Create a new Pull Request</li>
 </ol>
 
-<hr>
 ### AUTHORS
 ##### Adam Reed | adam.rdconcepts@gmail.com
 ##### Justin Reed | justin.rdconcepts@gmail.com
-<hr>
 
 ### INSPIRATION
 
