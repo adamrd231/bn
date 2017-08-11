@@ -19,7 +19,7 @@
   {%  else  %}
     <ul>
       {%for task in tasks %}
-      <li class="task_flex"><div id="task_id">{{task.name}} | {{task.created}}</div>
+      <li class="task_flex"><div id="task_id">{{task.name}}</div>
         <form method="POST" action="/complete-task">
             <input id="done_button" class="top_input" type="submit" value="DONE" />
             <input id="done_button" type="hidden" name="task-id" value="{{task.id}}" />

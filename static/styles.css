@@ -12,16 +12,9 @@ html {
 }
 
 a {
-  color: #dedede;
   padding: 4%;
   text-decoration: none;
 }
-
-
-a:hover {
-  color: lightblue;
-}
-
 
 .container {
 
@@ -47,6 +40,7 @@ a:hover {
   flex-direction: row;
   justify-content: space-between;
   flex:1;
+
 }
 
 h1 {
@@ -89,10 +83,15 @@ h2 {
 
 .box {
   flex: 1;
-  height: 35vh;
+  height: 49vh;
   background-color: white;
   border: .01em solid #333333;
+  color: #333333;
 
+}
+
+.box:hover {
+  color: skyblue;
 }
 
 .home_task_container {
@@ -111,6 +110,11 @@ table {
   margin-top: 2%;
 }
 
+#nav_button_link {
+  color: #dedede;
+  border: 1px solid #dedede;
+  padding: 7%;
+}
 
 #feedback_button {
   color: #222222;
@@ -159,12 +163,14 @@ table {
   margin-right: 2%;
 }
 
-
 .task_flex {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+
 }
+
+
 
 #task_input {
   padding: 3%;

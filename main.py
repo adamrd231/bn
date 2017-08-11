@@ -127,8 +127,11 @@ def bn():
         quad_tasks = Task.query.filter_by(quad_id=quad_id, owner=owner, completed=False).all()
         completed_quad_tasks = Task.query.filter_by(quad_id=quad_id, owner=owner, completed=True).all()
 
+        if len(quad_tasks) > 31:
+            flash("too many tasks")
+
         return render_template('bn.html',
-                        title="Quadrant2",
+                        title="Bare Necessity",
                         owner=owner,
                         tasks=quad_tasks,
                         quad_id=quad_id,

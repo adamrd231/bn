@@ -11,7 +11,7 @@
           <!-- THIS LOGIC SHOWS ALL THE TASKS THAT HAVE A MATCHING QUAD_ID -->
           <!-- FOR LOOP TO RUN THROUGH TASKS, CHECK IF MATCH -->
           {%for task in tasks %}
-            {% if task.quad_id == 1  %}
+            {% if task.quad_id == 1 %}
               <div class="home_tasks">{{task.name}}</div>
             {%endif%}
           {%endfor%}
@@ -89,7 +89,7 @@
   </div>
 
     <form id="form" action="/pdf_template" method="post">
-      <input id="download_button" type="submit" value="Download">
+      <input id="download_button" type="submit" value="Download to PDF">
     </form>
 
 </div>

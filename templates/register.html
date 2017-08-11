@@ -1,9 +1,28 @@
-{% extends "base.html" %}
+<!doctype html>
+<html>
+    <head>
+      <title>{{title}}</title>
+        <link rel="stylesheet" type="text/css" href="{{  url_for('static', filename='styles.css')  }}" />
+    </head>
+  <body>
 
-{% block content %}
+    <div class="header">
+      <div>
+        Bare Necessities3.0
+      </div>
+      <div>
+        {{timestamp}} - <a id="feedback_button" href="mailto:justin.rdconcepts@gmail.com">Leave Feedback</a>
+      </div>
+    </div>
+    <div class="navbar">
+      <div id="nav_button"><a href="http://127.0.0.1:5000/">HOME</a></div>
+      <div id="nav_button"><a href="/logout">Logout</a></div>
+    </div>
+    <div>
+      <h1>Register</h1>
+    </div>
 
 
-<h1>Register to Get It Done!</h1>
 <form action="/register" method="post">
     <table>
         <tr>
@@ -28,5 +47,5 @@
     <input type="submit" value="Register">
 </form>
 
-
-{% endblock %}
+</body>
+</html>
