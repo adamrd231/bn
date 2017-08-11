@@ -1,8 +1,7 @@
-<h1>BARE NECESSITY</h1>
-<a id="why_paper" href="#-whyPaper aria-hidden="true"></a>
+# BARE NECESSITY
 A Productivity Tool
-<hr>
-<h4>WHY PAPER?</h4>
+                                                     
+### Why Paper?
 <p>Too long have we done what the crowd tells us to do instead of doing what we know to feel write. With the bare necessity, start remembering things in a way that we all know is already powerful, writing down and crossing off our tasks.</p>
 <p>Remembering and focusing on what needs to be done today is a powerful tool, with the User Tasks feature, use a quadrant to focus in on a specfic area of your life. Daily tasks, habits, long term goals, etc...</p>
 <p>Use the blank space in each quadrant to write down the things you need to remember, or things that you do not need to be thinking about right now.</p>
@@ -12,11 +11,12 @@ A Productivity Tool
   <li>Print your Bare Necessity</li>
   <li>Carry With you to capture awesome ideas</li>
 </ul>
+
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/Adams-BN-02.png"/>
 
 <hr>
 
-<h4>GETTING STARTED</h4>
+### GETTING STARTED
 There is nothing to install, our web application gives you the freedom to print your BN anywhere.
 Email justin.rdconcepts@gmail.com in order to register for an account, due  to limited server space accounts are limited.
 
@@ -25,8 +25,8 @@ Email justin.rdconcepts@gmail.com in order to register for an account, due  to l
 <pre>barenecessity.pythonanywhere.com</pre>
 <hr/>
 
-<h4>CONTRIBUTORS</h4>
-<h6>Please check back for a list of upcoming features.</h6>
+### CONTRIBUTORS
+##### Please check back for a list of upcoming features.
 <ol>
   <li>Fork it (https://github.com/yourname/yourproject/rickAndMortyBranch(exampleForkName)</li>
   <li>Create your feature branch (git checkout -b feature/battleAxePocketMorty)</li>
@@ -36,15 +36,18 @@ Email justin.rdconcepts@gmail.com in order to register for an account, due  to l
 </ol>
 
 <hr>
-<h4>AUTHORS</h4>
-<h6>Adam Reed | adam.rdconcepts@gmail.com</h6>
-<h6>Justin Reed | justin.rdconcepts@gmail.com</h6>
+### AUTHORS
+##### Adam Reed | adam.rdconcepts@gmail.com
+##### Justin Reed | justin.rdconcepts@gmail.com
 <hr>
-<h4>INSPIRATION</h4>
-<h6>Tim Ferriss | Author/Podcaster/Teacher</h6>
-<h6>Marie Kondo | The Life Changing Magic of Tidying Up</h6>
-<h6>5-S Methodology</h6>
-<hr>
+
+### INSPIRATION
+
+##### Tim Ferriss | Author/Podcaster/Teacher
+##### Marie Kondo | The Life Changing Magic of Tidying Up
+##### 5-S Methodology
+
+
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-01-1.png"/>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/icons-02.png"/>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-05.png"/>
