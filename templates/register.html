@@ -14,37 +14,32 @@
         {{timestamp}} - <a id="feedback_button" href="mailto:justin.rdconcepts@gmail.com">Leave Feedback</a>
       </div>
     </div>
-    <div class="navbar">
-      <div id="nav_button"><a href="http://127.0.0.1:5000/">HOME</a></div>
-      <div id="nav_button"><a href="/logout">Logout</a></div>
-    </div>
+
+<div class="overlay">
+
+</div>
+
     <div>
       <h1>Register</h1>
     </div>
 
 
-<form action="/register" method="post">
+<form id="register_form" action="/really-long-registration_name-throws-off-hackers" method="post">
     <table>
         <tr>
             <td><label for="email">Email</label></td>
-            <td>
-                <input name="email" type="email" value="{{ email }}">
-            </td>
+            <td><input id="input" name="email" type="email" value="{{ email }}"></td>
         </tr>
         <tr>
             <td><label for="password">Password</label></td>
-            <td>
-                <input name="password" type="password">
-            </td>
+            <td><input id="input" name="password" type="password"></td>
         </tr>
         <tr>
             <td><label for="verify">Verify Password</label></td>
-            <td>
-                <input name="verify" type="password">
-            </td>
+            <td><input id="input" name="verify" type="password"></td>
         </tr>
     </table>
-    <input type="submit" value="Register">
+    <input id="input_button" type="submit" value="Register">
 </form>
 
 </body>
