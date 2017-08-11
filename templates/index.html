@@ -1,0 +1,99 @@
+{%   extends "base.html"   %}
+{%  block content  %}
+
+<!-- START THE MAIN FLEX BOX CONTAINER -->
+<div class="flex">
+  <!--  TOP THREE ROWS OF THE APP -->
+  <div class="top_row">
+
+        <div class="home_task_container">
+          <a class="box" href="/bn?quad_id=1">
+          <!-- THIS LOGIC SHOWS ALL THE TASKS THAT HAVE A MATCHING QUAD_ID -->
+          <!-- FOR LOOP TO RUN THROUGH TASKS, CHECK IF MATCH -->
+          {%for task in tasks %}
+            {% if task.quad_id == 1 %}
+              <div class="home_tasks">{{task.name}}</div>
+            {%endif%}
+          {%endfor%}
+          </a>
+        </div>
+
+
+
+        <div class="home_task_container">
+          <a class="box" href="/bn?quad_id=2">
+          <!-- THIS LOGIC SHOWS ALL THE TASKS THAT HAVE A MATCHING QUAD_ID -->
+          <!-- FOR LOOP TO RUN THROUGH TASKS, CHECK IF MATCH -->
+          {%for task in tasks %}
+            {% if task.quad_id == 2  %}
+              <div class="home_tasks">{{task.name}}</div>
+            {%endif%}
+          {%endfor%}
+          </a>
+        </div>
+
+        <div class="home_task_container">
+          <a class="box" href="/bn?quad_id=3">
+          <!-- THIS LOGIC SHOWS ALL THE TASKS THAT HAVE A MATCHING QUAD_ID -->
+          <!-- FOR LOOP TO RUN THROUGH TASKS, CHECK IF MATCH -->
+          {%for task in tasks %}
+            {% if task.quad_id == 3  %}
+              <div class="home_tasks">{{task.name}}</div>
+            {%endif%}
+          {%endfor%}
+          </a>
+        </div>
+
+  </div>
+
+
+  <div class="bottom_row">
+
+    <div class="home_task_container">
+      <a class="box" href="/bn?quad_id=4">
+      <!-- THIS LOGIC SHOWS ALL THE TASKS THAT HAVE A MATCHING QUAD_ID -->
+      <!-- FOR LOOP TO RUN THROUGH TASKS, CHECK IF MATCH -->
+      {%for task in tasks %}
+        {% if task.quad_id == 4  %}
+          <div class="home_tasks">{{task.name}}</div>
+        {%endif%}
+      {%endfor%}
+      </a>
+    </div>
+
+
+
+    <div class="home_task_container">
+      <a class="box" href="/bn?quad_id=5">
+      <!-- THIS LOGIC SHOWS ALL THE TASKS THAT HAVE A MATCHING QUAD_ID -->
+      <!-- FOR LOOP TO RUN THROUGH TASKS, CHECK IF MATCH -->
+      {%for task in tasks %}
+        {% if task.quad_id == 5  %}
+          <div class="home_tasks">{{task.name}}</div>
+        {%endif%}
+      {%endfor%}
+      </a>
+    </div>
+
+    <div class="home_task_container">
+      <a class="box" href="/bn?quad_id=6">
+      <!-- THIS LOGIC SHOWS ALL THE TASKS THAT HAVE A MATCHING QUAD_ID -->
+      <!-- FOR LOOP TO RUN THROUGH TASKS, CHECK IF MATCH -->
+      {%for task in tasks %}
+        {% if task.quad_id == 6  %}
+          <div class="home_tasks">{{task.name}}</div>
+        {%endif%}
+      {%endfor%}
+      </a>
+    </div>
+  </div>
+
+    <form id="form" action="/pdf_template" method="post">
+      <input id="download_button" type="submit" value="Download to PDF">
+    </form>
+
+</div>
+
+
+
+{%  endblock  %}

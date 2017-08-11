@@ -1,0 +1,217 @@
+body {
+  margin: 0;
+  width: 100%;
+}
+
+html {
+  background: #333333;
+  color: white;
+  font-family: raleway;
+  width: 100%;
+  height:97vh;
+}
+
+a {
+  padding: 4%;
+  text-decoration: none;
+}
+
+.container {
+
+  flex:1;
+}
+
+.header {
+  padding-left: 2%;
+  color: #222222;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding-top:2%;
+  padding-bottom: 2%;
+  flex:1;
+}
+
+.navbar {
+  padding-left: 5%;
+  padding-right: 5%;
+  height: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex:1;
+
+}
+
+h1 {
+  padding-left: 5%;
+}
+
+h2 {
+  padding-left: 5%;
+  font-size: 1em;
+}
+
+.bn_tasks {
+  padding-left: 5%;
+  width: 50em;
+  margin: auto;
+}
+
+#bn_task_input {
+  margin-left: 2%;
+    width: 60%;
+
+}
+
+.title {
+  color: black;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.top_row, .bottom_row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.box {
+  flex: 1;
+  height: 49vh;
+  background-color: white;
+  border: .01em solid #333333;
+  color: #333333;
+
+}
+
+.box:hover {
+  color: skyblue;
+}
+
+.home_task_container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: white;
+}
+
+table {
+  width: 100%
+}
+
+
+#nav_button {
+  margin-top: 2%;
+}
+
+#nav_button_link {
+  color: #dedede;
+  border: 1px solid #dedede;
+  padding: 7%;
+}
+
+#feedback_button {
+  color: #222222;
+}
+
+#feedback_button:hover {
+  color: lightblue;
+}
+
+#form {
+  margin-top: 2%;
+}
+
+#register_form {
+  margin-left: 6%;
+}
+
+#input_button {
+  margin-top: 2%;
+  padding: 1%;
+  margin-left: 5%;
+  color: #dedede;
+  background-color: #333333;
+  border: .01em solid lightgreen;
+}
+
+#input, #bn_task_input {
+
+  color: white;
+  width: 80%;
+  padding: .5%;
+  margin-left: 5%;
+  font-size: 1.6em;
+  background: #333333;
+  box-shadow: none;
+  border: none;
+  border-bottom: .05em solid lightgreen;
+}
+
+#input::placeholder {
+  color: #dedede;
+}
+
+#input:focus {
+  box-shadow: none;
+  border: none;
+}
+
+#task_id {
+  margin-right: 2%;
+  font-size: 1.4em;
+}
+
+.task_flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+}
+
+
+
+#task_input {
+  padding: 3%;
+  margin-top: 3%;
+  width: 100%;
+  color: white;
+  font-size: 1.6em;
+  background: #333333;
+  box-shadow: none;
+  border: none;
+  border: .05em solid white;
+}
+
+#done_button {
+  color: white;
+  background: #333333;
+  box-shadow: none;
+  border: none;
+  border: .05em solid white;
+}
+
+#download_button {
+  color: white;
+  background: #333333;
+  box-shadow: none;
+  border: none;
+  border: .05em solid #dedede;
+  padding: 3%;
+  width: 20%;
+  margin-right: 40%;
+  margin-left: 40%;
+  margin-bottom: 2%;
+  text-align: center;
+  font-size: 1em;
+}
+
+.overlay {
+  background-color: black;
+}

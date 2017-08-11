@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    <head>
+      <title>{{title}}</title>
+        <link rel="stylesheet" type="text/css" href="{{  url_for('static', filename='styles.css')  }}" />
+    </head>
+  <body>
+
+    <div class="header">
+      <div>
+        Bare Necessities3.0
+      </div>
+      <div>
+        {{timestamp}} - <a id="feedback_button" href="mailto:justin.rdconcepts@gmail.com">Leave Feedback</a>
+      </div>
+    </div>
+    <div class="navbar">
+      <div id="nav_button"><a id="nav_button_link" href="/">HOME</a></div>
+      <div id="nav_button"><a id="nav_button_link" href="/logout">Logout</a></div>
+    </div>
+    <div>
+      <h1>Hello, {{owner.email}}</h1>
+    </div>
+
+    <div class="container">
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        <ul>
+          {% for category,message in messages %}
+            <li class="{{category}}">{{message}}</li>
+          {% endfor %}
+        </ul>
+    {% endwith %}
+
+
+    {%  block content  %}
+    {%  endblock  %}
+    </div>
+
+  </body>
+</html>

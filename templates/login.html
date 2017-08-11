@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>
+      <title>{{title}}</title>
+        <link rel="stylesheet" type="text/css" href="{{  url_for('static', filename='styles.css')  }}" />
+    </head>
+  <body>
+    <div class="container">
+
+      <div class="header">
+        <div>
+          Bare Necessities3.0
+        </div>
+        <div>
+          (Aug 2, 2017 6:03 PM) - <a href="mailto:adam.rdconcepts@gmail.com">Leave Feedback</a>
+        </div>
+      </div>
+
+      {% with messages = get_flashed_messages(with_categories=True) %}
+          <ul>
+            {% for category,message in messages %}
+              <li class="{{category}}">{{message}}</li>
+            {% endfor %}
+          </ul>
+      {% endwith %}
+
+
+<div>
+<form id="form" action="/login" method="post">
+    <table>
+        <tr>
+
+            <td>
+                <input id="input" name="email" type="email" placeholder="Please enter your email" value="{{ check_password }}">
+            </td>
+        </tr>
+        <tr>
+
+            <td>
+                <input id="input" name="password" placeholder="Please enter your password" type="password">
+            </td>
+        </tr>
+    </table>
+    <input id="input_button" type="submit" value="Login">
+</form>
+</div>
+
+</body>
+    </div>
+</html>
