@@ -1,8 +1,8 @@
 from flask import Flask, request, redirect, render_template, session, flash, make_response
 from flask_sqlalchemy import SQLAlchemy
-import pdfkit
 from datetime import datetime
 from momentjs import momentjs
+import os
 
 
 #SET UP FLASK APP
@@ -87,7 +87,6 @@ def login():
     return render_template('login.html')
 
 
-
 #HOME PAGE ROUTE, SHOWS THE DASHBOARD FOR THE TASK MANAGEMENT APP
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -95,12 +94,21 @@ def index():
     owner = User.query.filter_by(email=session['email']).first()
     uncompleted_tasks = Task.query.filter_by(completed=False, owner=owner).all()
     completed_tasks = Task.query.filter_by(completed=True, owner=owner).all()
+    allQuadrants = []
+
+    for filename in os.listdir('templates/snippetfiles'):
+        if filename.endswith(".html"):
+            allQuadrants += [(os.path.join('/snippetfiles/', filename))]
+        else:
+            continue
+    flash(str(allQuadrants))
 
     return render_template('index.html',
             timestamp = datetime.now().replace(minute = 0),
             owner=owner,
             uncompleted_tasks=uncompleted_tasks,
             completed_tasks=completed_tasks,
+            allQuadrants=allQuadrants,
             title="Bare Necessities, Bitch.",)
 
 
@@ -142,32 +150,7 @@ def bn():
 
 
 #PRINT YOUR BN!
-@app.route('/pdf_template', methods=['POST', 'GET'])
-def pdf_templates():
 
-    owner = User.query.filter_by(email=session['email']).first()
-    tasks = Task.query.filter_by(completed=False, owner=owner).all()
-
-    options = {
-        'page-size' : 'Letter',
-        'margin-top': '0in',
-        'margin-right': '0in',
-        'margin-bottom': '0in',
-        'margin-left': '0in',
-    }
-    css = 'static/styles.css'
-
-    rendered = render_template('pdf_template.html',
-                                owner = owner,
-                                tasks=tasks,
-                                )
-
-    pdf = pdfkit.from_string(rendered, False, options=options)
-    response = make_response(pdf)
-    response.headers['Content-Type'] = 'application/pdf'
-    response.headers['Content-Disposition'] = 'inline'
-
-    return response
 
 
 #REGISTER USERS
