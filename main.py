@@ -171,7 +171,7 @@ def pdf_templates():
     return response
 
 
-# TODO Make this behind a password somehow?
+#REGISTER USERS
 @app.route('/really-long-registration_name-throws-off-hackers', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
@@ -180,6 +180,8 @@ def register():
         verify = request.form['verify']
 
         # - Validate the users data
+        if not password == verify:
+            return '<h1>Password does not match Verification</h1>'
 
         existing_user = User.query.filter_by(email=email).first()
         if not existing_user:
