@@ -92,15 +92,14 @@ def login():
 @app.route('/', methods=['POST', 'GET'])
 def index():
 
-    quad_id = request.args.get('quad_id')
     owner = User.query.filter_by(email=session['email']).first()
-    tasks = Task.query.filter_by(completed=False, owner=owner).all()
+    uncompleted_tasks = Task.query.filter_by(completed=False, owner=owner).all()
     completed_tasks = Task.query.filter_by(completed=True, owner=owner).all()
 
     return render_template('index.html',
             timestamp = datetime.now().replace(minute = 0),
             owner=owner,
-            tasks=tasks,
+            uncompleted_tasks=uncompleted_tasks,
             completed_tasks=completed_tasks,
             title="Bare Necessities, Bitch.",)
 
@@ -203,8 +202,6 @@ def register():
 def logout():
     del session['email']
     return redirect('/')
-
-
 
 
 

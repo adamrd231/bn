@@ -1,28 +1,33 @@
-<!doctype html>
-<html>
-    <head>
-      <title>{{title}}</title>
-        <link rel="stylesheet" type="text/css" href="{{  url_for('static', filename='styles.css')  }}" />
-    </head>
-  <body>
+{%   extends "base.html"   %}
+{% block header %}
+<div class="header">
+  <div>
+    Bare Necessities3.0
+  </div>
+  <div>
+    {{timestamp}} - <a id="feedback_button" href="mailto:justin.rdconcepts@gmail.com">Leave Feedback</a>
+  </div>
+</div>
+{% endblock header %}
+{% block greeting %}
+  {% block flash_messages %}
+  {% with messages = get_flashed_messages(with_categories=True) %}
+      <ul>
+        {% for category,message in messages %}
+          <li class="{{category}}">{{message}}</li>
+        {% endfor %}
+      </ul>
+  {% endwith %}
+  {% endblock flash_messages %}
+{% endblock greeting %}
+
+{%  block content  %}
+
+
     <div class="container">
 
-      <div class="header">
-        <div>
-          Bare Necessities3.0
-        </div>
-        <div>
-          (Aug 2, 2017 6:03 PM) - <a href="mailto:adam.rdconcepts@gmail.com">Leave Feedback</a>
-        </div>
-      </div>
 
-      {% with messages = get_flashed_messages(with_categories=True) %}
-          <ul>
-            {% for category,message in messages %}
-              <li class="{{category}}">{{message}}</li>
-            {% endfor %}
-          </ul>
-      {% endwith %}
+
 
 
 <div>
@@ -45,6 +50,4 @@
 </form>
 </div>
 
-</body>
-    </div>
-</html>
+{%  endblock  %}

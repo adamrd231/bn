@@ -21,10 +21,19 @@ a {
   flex:1;
 }
 
+.bar_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+}
+
 .header {
   padding-left: 2%;
   color: #222222;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   flex-direction: column;
   background-color: white;
   padding-top:2%;
@@ -35,7 +44,7 @@ a {
 .navbar {
   padding-left: 5%;
   padding-right: 5%;
-  height: 5vh;
+  height: 4em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -105,9 +114,13 @@ table {
   width: 100%
 }
 
+.user_bar {
+  background: #333333;
+}
 
 #nav_button {
-  margin-top: 2%;
+  margin-top: 3%;
+  margin-bottom: 1%;
 }
 
 #nav_button_link {
