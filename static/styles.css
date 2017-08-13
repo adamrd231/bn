@@ -91,11 +91,9 @@ h2 {
 }
 
 .box {
-  flex: 1;
-  height: 49vh;
-  background-color: white;
   border: .01em solid #333333;
   color: #333333;
+  height: 100%;
 
 }
 
@@ -103,7 +101,8 @@ h2 {
   color: skyblue;
 }
 
-.home_task_container {
+.homepage_container {
+  height: 40em;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -227,4 +226,8 @@ table {
 
 .overlay {
   background-color: black;
+}
+
+#radio {
+  color: black;
 }

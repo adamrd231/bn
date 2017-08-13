@@ -3,15 +3,8 @@
 
     <!-- Quadrant 1 -->
 
-    <td style='
-        width:32%;
-        height:50%;
-        inline-block;
-        font-size: 9em;
-        font-family: helvetica;
-        border-right: 1px solid #333333;
-        border-bottom: 1px solid #333333;'>
-            <div style='height: 100%; padding: 2%;'>
+    <td>
+            <div>
               {%for task in tasks %}
                 {% if task.quad_id == 1  %}
                   <div>{{task.name}}</div>
@@ -21,12 +14,8 @@
     </td>
 
     <!-- Quadrant 2 -->
-    <td style="
-        font-size: 9em;
-        font-family: helvetica;
-        width: 32%;
-        border-bottom: 1px solid #333333;">
-            <div style='height: 100%; padding: 2%;'>
+    <td>
+            <div>
               {%for task in tasks %}
                 {% if task.quad_id == 2  %}
                   <div>{{task.name}}</div>
@@ -36,13 +25,7 @@
     </td>
 
     <!-- Quadrant 3 -->
-    <td style="
-        font-size: 9em;
-        font-family: helvetica;
-        width: 32%;
-        border-left: 1px solid #333333;
-        border-bottom: 1px solid #333333;">
-            <div style='height: 100%; padding: 2%;'>
+    <td>
               {%for task in tasks %}
                 {% if task.quad_id == 3  %}
                   <div>{{task.name}}</div>
@@ -54,14 +37,7 @@
   <tr>
 
     <!-- Quadrant 4 -->
-    <td style="
-        height:50%;
-        font-size: 9em;
-        font-family: helvetica;
-        width: 32%;
-        border-right: 1px solid #333333;
-        border-top: 1px solid #333333;">
-          <div style='height: 100%; padding: 2%;'>
+    <td>
             {%for task in tasks %}
               {% if task.quad_id == 4  %}
                 <div>{{task.name}}</div>
@@ -71,12 +47,7 @@
     </td>
 
     <!-- Quadrant 5 -->
-    <td style="
-      font-size: 9em;
-      font-family: helvetica;
-      width: 32%;
-      border-top: 1px solid #333333;">
-        <div style='height: 100%; padding: 2%;'>
+    <td>
             {%for task in tasks %}
               {% if task.quad_id == 5  %}
                 <div>{{task.name}}</div>
@@ -87,13 +58,8 @@
 
     </td>
     <!-- Quadrant 6 -->
-    <td style="
-        font-size: 9em;
-        font-family: helvetica;
-        width: 32%;
-        border-left: 1px solid #333333;
-        border-top: 1px solid #333333;">
-          <div style='height: 100%; padding: 2%;'>
+    <td>
+          <div>
             {%for task in tasks %}
               {% if task.quad_id == 6  %}
                 <div>{{task.name}}</div>

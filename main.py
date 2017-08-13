@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from momentjs import momentjs
 import os
+from flask_weasyprint import HTML, render_pdf
+
 
 
 #SET UP FLASK APP
@@ -13,40 +15,61 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://get-it-done@localhost:8
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 app.secret_key = "thebarenecessities"
+app.jinja_env.globals['momentjs'] = momentjs
 
-#TASK USER CLASS, CURRENTLY FILTERS BY
-    # USER ACCOUNT
-    # QUADRANT (1-6)
-    # COMPLETED (TRUE OR FALSE)
-class Task(db.Model):
-
+class Quadrant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    completed = db.Column(db.Boolean)
+    feature_name = db.Column(db.String(50))
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    quad_id = db.Column(db.Integer)
-    created = db.Column(db.DateTime)
 
-    def __init__(self, name, owner, quad_id):
-        self.name = name
-        self.completed = False
-        self.created  = datetime.utcnow()
+
+    def __init__(self, feature_name, owner):
+        self.feature_name = feature_name
         self.owner = owner
-        self.quad_id = quad_id
+
+
+
 
 #USER ACCOUNT CLASS
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True)
     password = db.Column(db.String(120))
-    tasks = db.relationship('Task', backref='owner')
+    quadrants = db.relationship('Quadrant', backref='owner')
+
 
     def __init__(self, email, password):
         self.email = email
         self.password = password
 
 
-app.jinja_env.globals['momentjs'] = momentjs
+
+
+
+#TASK USER CLASS, CURRENTLY FILTERS BY
+    # USER ACCOUNT
+    # QUADRANT (1-6)
+    # COMPLETED (TRUE OR FALSE)
+# class Task(db.Model):
+#
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(100))
+#     completed = db.Column(db.Boolean)
+#
+#     quad_id = db.Column(db.Integer)
+#     created = db.Column(db.DateTime)
+#
+#     def __init__(self, name, quad_id):
+#         self.name = name
+#         self.completed = False
+#         self.created  = datetime.utcnow()
+#         self.quad_id = quad_id
+
+
+
+
+
+
 
 
 #BLOCKING ROUTES FOR USERS WHO ARE NOT SIGNED IN
@@ -92,33 +115,32 @@ def login():
 def index():
 
     owner = User.query.filter_by(email=session['email']).first()
-    uncompleted_tasks = Task.query.filter_by(completed=False, owner=owner).all()
-    completed_tasks = Task.query.filter_by(completed=True, owner=owner).all()
-    allQuadrants = []
 
-    for filename in os.listdir('templates/snippetfiles'):
-        if filename.endswith(".html"):
-            allQuadrants += [(os.path.join('/snippetfiles/', filename))]
-        else:
-            continue
-    flash(str(allQuadrants))
+    if request.method == 'POST':
+        quadrant_name = request.form['quadrant']
+
+        new_quadrant = Quadrant(quadrant_name, owner)
+
+        db.session.add(new_quadrant)
+        db.session.commit()
+
+
+
+    user = User.query.filter_by(email=session['email']).first()
+    quadrants = Quadrant.query.filter_by().all()
+
 
     return render_template('index.html',
             timestamp = datetime.now().replace(minute = 0),
-            owner=owner,
-            uncompleted_tasks=uncompleted_tasks,
-            completed_tasks=completed_tasks,
-            allQuadrants=allQuadrants,
-            title="Bare Necessities, Bitch.",)
+            user=user,
+            quadrants=quadrants,)
 
 
 #THIS ROUTE BRINGS THE USER TO THE TASKS PAGE, FILTERED BY WHICH QUADRANT THEY CLICK INTO
 @app.route('/bn', methods=['POST', 'GET'])
 def bn():
 
-    owner = User.query.filter_by(email=session['email']).first()
-    tasks = Task.query.filter_by(completed=False, owner=owner).all()
-    completed_tasks = Task.query.filter_by(completed=True, owner=owner).all()
+    user = User.query.filter_by(email=session['email']).first()
     quad_id = request.args.get('quad_id')
 
     #IF THE USER WANTS TO CREATE A NEW TASK
@@ -130,19 +152,10 @@ def bn():
 
     #CHECK WHICH QUADRANT THE USER CLICKED INTO
     if (quad_id):
-
-        #USER THE OWNER ACCOUNT SIGNED IN TO ONLY FILTER ONLY THEIR TASKS
-        #FILTER BY COMPLETED TRUE VS FALSE TO SHOW BOTH CATEGORIES.
-        #USE THE QUAD_ID VARIABLE TO FILTER THE TASKS
-        quad_tasks = Task.query.filter_by(quad_id=quad_id, owner=owner, completed=False).all()
-        completed_quad_tasks = Task.query.filter_by(quad_id=quad_id, owner=owner, completed=True).all()
-
         return render_template('bn.html',
                         title="Bare Necessity",
-                        owner=owner,
-                        tasks=quad_tasks,
-                        quad_id=quad_id,
-                        completed_quad_tasks=completed_quad_tasks,)
+                        user=user,
+                        quad_id=quad_id,)
 
         #TODO create a 404 / error page to land on
     return render_template('error_page.html',
@@ -150,7 +163,22 @@ def bn():
 
 
 #PRINT YOUR BN!
+@app.route('/pdf_template', methods=['POST', 'GET'])
+def pdf_templates():
+    owner = User.query.filter_by(email=session['email']).first()
+    tasks = Task.query.filter_by(completed=False, owner=owner).all()
+    html = render_template('pdf_template.html',
+                                owner = owner,
+                                tasks=tasks,
+                                )
+    return render_pdf(HTML(string=html))
 
+
+#LOGS USER OF OF THE SESSION
+@app.route('/logout')
+def logout():
+    del session['email']
+    return redirect('/')
 
 
 #REGISTER USERS
@@ -178,13 +206,6 @@ def register():
             return "<h1>Duplicate User</h1>"
 
     return render_template('register.html')
-
-
-#LOGS USER OF OF THE SESSION
-@app.route('/logout')
-def logout():
-    del session['email']
-    return redirect('/')
 
 
 
