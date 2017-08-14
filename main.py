@@ -21,11 +21,13 @@ class Quadrant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     feature_name = db.Column(db.String(50))
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    location = db.Column(db.Integer)
 
 
-    def __init__(self, feature_name, owner):
+    def __init__(self, feature_name, owner, location):
         self.feature_name = feature_name
         self.owner = owner
+        self.location = location
 
 
 
@@ -36,6 +38,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True)
     password = db.Column(db.String(120))
     quadrants = db.relationship('Quadrant', backref='owner')
+    tasks = db.relationship('Task', backref='owner')
 
 
     def __init__(self, email, password):
@@ -50,20 +53,22 @@ class User(db.Model):
     # USER ACCOUNT
     # QUADRANT (1-6)
     # COMPLETED (TRUE OR FALSE)
-# class Task(db.Model):
-#
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(100))
-#     completed = db.Column(db.Boolean)
-#
-#     quad_id = db.Column(db.Integer)
-#     created = db.Column(db.DateTime)
-#
-#     def __init__(self, name, quad_id):
-#         self.name = name
-#         self.completed = False
-#         self.created  = datetime.utcnow()
-#         self.quad_id = quad_id
+class Task(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    completed = db.Column(db.Boolean)
+    quad_id = db.Column(db.Integer)
+    created = db.Column(db.DateTime)
+    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __init__(self, name, quad_id, owner):
+        self.name = name
+        self.completed = False
+        self.created  = datetime.utcnow()
+        self.quad_id = quad_id
+        self.owner = owner
+
 
 
 
@@ -116,24 +121,34 @@ def index():
 
     owner = User.query.filter_by(email=session['email']).first()
 
+
     if request.method == 'POST':
         quadrant_name = request.form['quadrant']
+        quadrant_location = request.form['location']
 
-        new_quadrant = Quadrant(quadrant_name, owner)
+        check_existing = Quadrant.query.filter_by(owner_id=owner.id).all()
+        for check in check_existing:
+            if str(check.location) == quadrant_location:
+                db.session.delete(check)
+                db.session.commit()
 
-        db.session.add(new_quadrant)
-        db.session.commit()
+        if (quadrant_name, owner, quadrant_location):
+            new_quadrant = Quadrant(quadrant_name, owner, quadrant_location)
+            db.session.add(new_quadrant)
+            db.session.commit()
 
 
+    if (owner):
+        quadrants = Quadrant.query.filter_by(owner_id=owner.id).all()
 
-    user = User.query.filter_by(email=session['email']).first()
-    quadrants = Quadrant.query.filter_by().all()
-
-
-    return render_template('index.html',
-            timestamp = datetime.now().replace(minute = 0),
-            user=user,
-            quadrants=quadrants,)
+        return render_template('index.html',
+                timestamp = datetime.now().replace(minute = 0),
+                user=owner,
+                quadrants=quadrants,)
+    else:
+        return render_template('index.html',
+                timestamp = datetime.now().replace(minute = 0),
+                user=user,)
 
 
 #THIS ROUTE BRINGS THE USER TO THE TASKS PAGE, FILTERED BY WHICH QUADRANT THEY CLICK INTO
@@ -141,12 +156,12 @@ def index():
 def bn():
 
     user = User.query.filter_by(email=session['email']).first()
-    quad_id = request.args.get('quad_id')
+    quad_id = Quadrant.query.filter_by(owner_id=user.id).all()
 
     #IF THE USER WANTS TO CREATE A NEW TASK
     if request.method == 'POST':
         task_name = request.form['task']
-        new_task = Task(task_name, owner, quad_id)
+        new_task = Task(task_name, quad_id, owner)
         db.session.add(new_task)
         db.session.commit()
 
@@ -245,19 +260,15 @@ def un_complete_task():
     return redirect(url)
 
 #REMOVE TASK FROM THE DATABASE
-@app.route('/delete-task', methods=['POST'])
+@app.route('/delete-quadrant', methods=['POST'])
 def delete_task():
 
-    task_id = int(request.form['task-id'])
-    task = Task.query.get(task_id)
-    task.completed = True
-    db.session.delete(task)
+    quadrant_id = int(request.form['quadrant-id'])
+    quadrant = Quadrant.query.get(quadrant_id)
+    db.session.delete(quadrant)
     db.session.commit()
-    url_id = task.quad_id
 
-    url = '/bn?quad_id=' + str(url_id)
-
-    return redirect(url)
+    return redirect('/')
 
 
 

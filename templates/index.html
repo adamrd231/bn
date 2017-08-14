@@ -3,23 +3,19 @@
 
 
 {% if quadrants|length < 6 %}
-<form method='post'>
-    <input id="bn_task_input" type="text" name="quadrant" />
-  <input id="task_input" type="submit" value="Add Quadrant" />
+
+{% include 'snippetfiles/quadrant_radio.html' %}
+
+
+  </div>
 </form>
 {% endif %}
-
+<p>{{user.quadrants}}</p>
 
 {% if quadrants|length == 0 %}
 <p>
   no quadrants yet...
 </p>
-{% else %}
-{% for quadrant in quadrants %}
-<p>
-  {{quadrant.feature_name}}
-</p>
-{% endfor %}
 {% endif %}
 
 
@@ -29,16 +25,42 @@
   <div class="top_row">
     <div class="homepage_container">
       {% for quadrant in quadrants %}
-      {% if quadrant.id == 1 %}
+      {% if quadrant.location == 1 %}
+      <h4 style="color:black;">{{quadrant.feature_name}}</h4>
       {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
+
+      <form method="post" action="/delete-quadrant">
+        <input type="submit" value="delete" />
+        <input type="hidden" name="quadrant-id" value="{{quadrant.id}}"/>
+      </form>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- BOX NUMBER TWO -->
+    <div class="homepage_container">
+      {% for quadrant in quadrants %}
+      {% if quadrant.location == 2 %}
+      <h4 style="color:black;">{{quadrant.feature_name}}</h4>
+      {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
+      <form method="post" action="/delete-quadrant">
+        <input type="submit" value="delete" />
+        <input type="hidden" name="quadrant-id" value="{{quadrant.id}}"/>
+      </form>
       {% endif %}
       {% endfor %}
     </div>
     <div class="homepage_container">
-      {% include 'snippetfiles/taskList_1.html' %}
-    </div>
-    <div class="homepage_container">
-      {% include 'snippetfiles/taskList_1.html' %}
+      {% for quadrant in quadrants %}
+      {% if quadrant.location == 3 %}
+      <h4 style="color:black;">{{quadrant.feature_name}}</h4>
+      {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
+      <form method="post" action="/delete-quadrant">
+        <input type="submit" value="delete" />
+        <input type="hidden" name="quadrant-id" value="{{quadrant.id}}"/>
+      </form>
+      {% endif %}
+      {% endfor %}
     </div>
   </div>
 
@@ -50,15 +72,42 @@
 
 
     <div class="homepage_container">
-          {% include 'snippetfiles/taskList_1.html' %}
+      {% for quadrant in quadrants %}
+      {% if quadrant.location == 4 %}
+      <h4 style="color:black;">{{quadrant.feature_name}}</h4>
+      {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
+      <form method="post" action="/delete-quadrant">
+        <input type="submit" value="delete" />
+        <input type="hidden" name="quadrant-id" value="{{quadrant.id}}"/>
+      </form>
+      {% endif %}
+      {% endfor %}
     </div>
 
     <div class="homepage_container">
-        {% include 'snippetfiles/taskList_1.html' %}
+      {% for quadrant in quadrants %}
+      {% if quadrant.location == 5 %}
+      <h4 style="color:black;">{{quadrant.feature_name}}</h4>
+      {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
+      <form method="post" action="/delete-quadrant">
+        <input type="submit" value="delete" />
+        <input type="hidden" name="quadrant-id" value="{{quadrant.id}}"/>
+      </form>
+      {% endif %}
+      {% endfor %}
     </div>
 
     <div class="homepage_container">
-          {% include 'snippetfiles/taskList_1.html' %}
+      {% for quadrant in quadrants %}
+      {% if quadrant.location == 6 %}
+      <h4 style="color:black;">{{quadrant.feature_name}}</h4>
+      {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
+      <form method="post" action="/delete-quadrant">
+        <input type="submit" value="delete" />
+        <input type="hidden" name="quadrant-id" value="{{quadrant.id}}"/>
+      </form>
+      {% endif %}
+      {% endfor %}
     </div>
 
 

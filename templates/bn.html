@@ -1,7 +1,10 @@
 {%   extends "base.html"   %}
 {%  block content  %}
 
-  <h1>Quadrant {{quad_id}}</h1>
+  <h1>Quadrant
+{%for quad in user.quadrants%}
+    {{quad.location}}
+{% endfor %}</h1>
 
   <div class="bn_tasks">
 

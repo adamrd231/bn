@@ -91,10 +91,17 @@ h2 {
 }
 
 .box {
-  border: .01em solid #333333;
+  border: .005em solid #333333;
   color: #333333;
   height: 100%;
 
+}
+
+#dots {
+  background-image: url("http://rdconcepts.design/wp-content/uploads/2017/08/PersonalBN-02.png");
+  background-size: cover;
+  height: 100%;
+  border-bottom: .01em solid #333333;
 }
 
 .box:hover {
