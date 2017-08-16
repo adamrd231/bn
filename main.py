@@ -1,8 +1,5 @@
 from flask import Flask, request, redirect, render_template, session, flash, make_response
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
-from momentjs import momentjs
-import os
 from flask_weasyprint import HTML, render_pdf
 
 
@@ -15,7 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://get-it-done@localhost:8
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 app.secret_key = "thebarenecessities"
-app.jinja_env.globals['momentjs'] = momentjs
+
 
 class Quadrant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -30,23 +27,16 @@ class Quadrant(db.Model):
         self.location = location
 
 
-
-
 #USER ACCOUNT CLASS
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True)
     password = db.Column(db.String(120))
     quadrants = db.relationship('Quadrant', backref='owner')
-    tasks = db.relationship('Task', backref='owner')
-
 
     def __init__(self, email, password):
         self.email = email
         self.password = password
-
-
-
 
 
 #TASK USER CLASS, CURRENTLY FILTERS BY
@@ -59,19 +49,13 @@ class Task(db.Model):
     name = db.Column(db.String(100))
     completed = db.Column(db.Boolean)
     quad_id = db.Column(db.Integer)
-    created = db.Column(db.DateTime)
-    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer)
 
-    def __init__(self, name, quad_id, owner):
+    def __init__(self, name, quad_id, user_id):
         self.name = name
         self.completed = False
-        self.created  = datetime.utcnow()
         self.quad_id = quad_id
-        self.owner = owner
-
-
-
-
+        self.user_id = user_id
 
 
 
@@ -119,35 +103,35 @@ def login():
 @app.route('/', methods=['POST', 'GET'])
 def index():
 
-    owner = User.query.filter_by(email=session['email']).first()
+    user = User.query.filter_by(email=session['email']).first()
+    tasks = Task.query.filter_by(user_id=user.id).all()
 
 
     if request.method == 'POST':
         quadrant_name = request.form['quadrant']
         quadrant_location = request.form['location']
 
-        check_existing = Quadrant.query.filter_by(owner_id=owner.id).all()
+        check_existing = Quadrant.query.filter_by(owner_id=user.id).all()
         for check in check_existing:
             if str(check.location) == quadrant_location:
                 db.session.delete(check)
                 db.session.commit()
 
-        if (quadrant_name, owner, quadrant_location):
-            new_quadrant = Quadrant(quadrant_name, owner, quadrant_location)
+        if (quadrant_name, user, quadrant_location):
+            new_quadrant = Quadrant(quadrant_name, user, quadrant_location)
             db.session.add(new_quadrant)
             db.session.commit()
 
 
-    if (owner):
-        quadrants = Quadrant.query.filter_by(owner_id=owner.id).all()
+    if (user):
+        quadrants = Quadrant.query.filter_by(owner_id=user.id).all()
 
         return render_template('index.html',
-                timestamp = datetime.now().replace(minute = 0),
-                user=owner,
-                quadrants=quadrants,)
+                user=user,
+                quadrants=quadrants,
+                tasks=tasks)
     else:
         return render_template('index.html',
-                timestamp = datetime.now().replace(minute = 0),
                 user=user,)
 
 
@@ -155,22 +139,25 @@ def index():
 @app.route('/bn', methods=['POST', 'GET'])
 def bn():
 
+    quad_id = request.args.get('quad_id')
     user = User.query.filter_by(email=session['email']).first()
-    quad_id = Quadrant.query.filter_by(owner_id=user.id).all()
+    tasks = Task.query.filter_by(user_id=user.id, quad_id=quad_id).all()
+
 
     #IF THE USER WANTS TO CREATE A NEW TASK
     if request.method == 'POST':
+
         task_name = request.form['task']
-        new_task = Task(task_name, quad_id, owner)
+        new_task = Task(task_name, quad_id, user.id)
         db.session.add(new_task)
         db.session.commit()
 
     #CHECK WHICH QUADRANT THE USER CLICKED INTO
-    if (quad_id):
+    if (user.id):
         return render_template('bn.html',
                         title="Bare Necessity",
                         user=user,
-                        quad_id=quad_id,)
+                        tasks=tasks,)
 
         #TODO create a 404 / error page to land on
     return render_template('error_page.html',
