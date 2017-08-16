@@ -104,7 +104,7 @@ def login():
 def index():
 
     user = User.query.filter_by(email=session['email']).first()
-    tasks = Task.query.filter_by(user_id=user.id).all()
+    tasks = Task.query.filter_by(user_id=user.id, completed=False).all()
 
 
     if request.method == 'POST':
@@ -141,7 +141,7 @@ def bn():
 
     quad_id = request.args.get('quad_id')
     user = User.query.filter_by(email=session['email']).first()
-    tasks = Task.query.filter_by(user_id=user.id, quad_id=quad_id).all()
+    tasks = Task.query.filter_by(user_id=user.id, quad_id=quad_id, completed=False).all()
 
 
     #IF THE USER WANTS TO CREATE A NEW TASK

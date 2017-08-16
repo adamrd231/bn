@@ -22,10 +22,13 @@
   <!--  TOP THREE ROWS OF THE APP -->
   <!-- BOX NUMBER ONE -->
   <div class="top_row">
+
+
     <div class="homepage_container">
-      <a class="box" href="http://127.0.0.1:5000/bn?quad_id=1">
+
       {% for quadrant in quadrants %}
       {% if quadrant.location == 1 %}
+      <a class="box" href="http://127.0.0.1:5000/bn?quad_id=1">
       {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
         </a>
       <form method="post" action="/delete-quadrant">
@@ -38,9 +41,10 @@
 
     <!-- BOX NUMBER TWO -->
     <div class="homepage_container">
-      <a class="box" href="http://127.0.0.1:5000/bn?quad_id=2">
+
       {% for quadrant in quadrants %}
       {% if quadrant.location == 2 %}
+      <a class="box" href="http://127.0.0.1:5000/bn?quad_id=2">
       {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
       </a>
       <form method="post" action="/delete-quadrant">
@@ -53,10 +57,12 @@
 
     <!-- BOX NUMBER THREE -->
     <div class="homepage_container">
-      <a class="box" href="http://127.0.0.1:5000/bn?quad_id=3">
+
       {% for quadrant in quadrants %}
       {% if quadrant.location == 3 %}
+      <a class="box" href="http://127.0.0.1:5000/bn?quad_id=3">
       {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
+      </a>
       <form method="post" action="/delete-quadrant">
         <input type="submit" value="delete" />
         <input type="hidden" name="quadrant-id" value="{{quadrant.id}}"/>
@@ -64,20 +70,23 @@
       {% endif %}
       {% endfor %}
     </div>
+
   </div>
 
 
-  </div>
+
 
   <!-- SECOND ROW IN THE FLEXBOX CONTAINER -->
   <div class="bottom_row">
 
     <!-- BOX NUMBER FOUR -->
     <div class="homepage_container">
-      <a class="box" href="http://127.0.0.1:5000/bn?quad_id=4">
+
       {% for quadrant in quadrants %}
       {% if quadrant.location == 4 %}
+      <a class="box" href="http://127.0.0.1:5000/bn?quad_id=4">
       {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
+      </a>
       <form method="post" action="/delete-quadrant">
         <input type="submit" value="delete" />
         <input type="hidden" name="quadrant-id" value="{{quadrant.id}}"/>
@@ -88,10 +97,12 @@
 
     <!-- BOX NUMBER FIVE -->
     <div class="homepage_container">
-      <a class="box" href="http://127.0.0.1:5000/bn?quad_id=5">
+
       {% for quadrant in quadrants %}
       {% if quadrant.location == 5 %}
+      <a class="box" href="http://127.0.0.1:5000/bn?quad_id=5">
       {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
+      </a>
       <form method="post" action="/delete-quadrant">
         <input type="submit" value="delete" />
         <input type="hidden" name="quadrant-id" value="{{quadrant.id}}"/>
@@ -102,10 +113,12 @@
 
     <!-- BOX NUMBER SIX -->
     <div class="homepage_container">
-      <a class="box" href="http://127.0.0.1:5000/bn?quad_id=6">
+
       {% for quadrant in quadrants %}
       {% if quadrant.location == 6 %}
+      <a class="box" href="http://127.0.0.1:5000/bn?quad_id=6">
       {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
+      </a>
       <form method="post" action="/delete-quadrant">
         <input type="submit" value="delete" />
         <input type="hidden" name="quadrant-id" value="{{quadrant.id}}"/>
@@ -114,10 +127,12 @@
       {% endfor %}
     </div>
 
-  </div>
+    </div>
+</div>
 
     <form id="form" action="/pdf_template" method="post">
       <input id="download_button" type="submit" value="Download to PDF">
     </form>
+
 
 {%  endblock  %}
