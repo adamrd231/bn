@@ -1,6 +1,6 @@
-from flask import Flask, request, redirect, render_template, session, flash, make_response
+from flask import Flask, request, redirect, render_template, session, flash, make_response, url_for
 from flask_sqlalchemy import SQLAlchemy
-import pdfkit
+from flask_weasyprint import HTML, CSS, render_pdf
 from datetime import datetime
 from momentjs import momentjs
 
@@ -148,26 +148,13 @@ def pdf_templates():
     owner = User.query.filter_by(email=session['email']).first()
     tasks = Task.query.filter_by(completed=False, owner=owner).all()
 
-    options = {
-        'page-size' : 'Letter',
-        'margin-top': '0in',
-        'margin-right': '0in',
-        'margin-bottom': '0in',
-        'margin-left': '0in',
-    }
-    css = 'static/styles.css'
 
-    rendered = render_template('pdf_template.html',
+    html = render_template('pdf_template.html',
                                 owner = owner,
-                                tasks=tasks,
+                                tasks=tasks
                                 )
 
-    pdf = pdfkit.from_string(rendered, False, options=options)
-    response = make_response(pdf)
-    response.headers['Content-Type'] = 'application/pdf'
-    response.headers['Content-Disposition'] = 'inline'
-
-    return response
+    return render_pdf(HTML(string=html))
 
 
 #REGISTER USERS
