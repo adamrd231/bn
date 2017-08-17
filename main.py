@@ -2,7 +2,6 @@ from flask import Flask, request, redirect, render_template, session, flash
 from flask.ext.sqlalchemy import SQLAlchemy
 from datetime import datetime
 from momentjs import momentjs
-import pdfkit
 
 
 
