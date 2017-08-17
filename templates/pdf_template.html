@@ -10,11 +10,9 @@
 
   <table>
     <tr>
-
-      <!-- Quadrant 1 -->
-
-      <td>
-              <div>
+      <!-- QUADRANT # 1 -->
+      <td class="border_right_bottom">
+              <div id="box">
                 {%for task in tasks %}
                   {% if task.quad_id == 1  %}
                     <div>{{task.name}}</div>
@@ -22,10 +20,9 @@
                 {%endfor%}
               </div>
       </td>
-
-      <!-- Quadrant 2 -->
-      <td>
-              <div>
+<!-- QUADRANT # 2 -->
+      <td class="border_right_bottom">
+              <div id="box">
                 {%for task in tasks %}
                   {% if task.quad_id == 2  %}
                     <div>{{task.name}}</div>
@@ -33,10 +30,9 @@
                 {%endfor%}
               </div>
       </td>
-
-      <!-- Quadrant 3 -->
+<!-- QUADRANT # 3 -->
       <td>
-              <div>
+              <div id="box">
                 {%for task in tasks %}
                   {% if task.quad_id == 3  %}
                     <div>{{task.name}}</div>
@@ -50,10 +46,9 @@
 
 
     <tr>
-
-      <!-- Quadrant 4 -->
-      <td>
-            <div>
+<!-- QUADRANT # 4 -->
+      <td class="border_right">
+            <div id="box">
               {%for task in tasks %}
                 {% if task.quad_id == 4  %}
                   <div>{{task.name}}</div>
@@ -61,10 +56,9 @@
               {%endfor%}
             </div>
       </td>
-
-      <!-- Quadrant 5 -->
-      <td>
-          <div>
+<!-- QUADRANT # 5 -->
+      <td class="border_right">
+          <div id="box">
               {%for task in tasks %}
                 {% if task.quad_id == 5  %}
                   <div>{{task.name}}</div>
@@ -74,9 +68,9 @@
 
 
       </td>
-      <!-- Quadrant 6 -->
-      <td>
-            <div>
+<!-- QUADRANT # 6 -->
+      <td class="border_top">
+            <div id="box">
               {%for task in tasks %}
                 {% if task.quad_id == 6  %}
                   <div>{{task.name}}</div>
