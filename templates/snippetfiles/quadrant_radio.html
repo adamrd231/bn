@@ -1,33 +1,59 @@
 <form method='post'>
-  <div>
-    <input id="radioButton" type="radio" name="quadrant" value="taskList_1" />
-    <label for="radioButton">Task List</label>
-    <input id="radioButton" type="radio" name="quadrant" value="dots" />
-    <label for="radioButton">Dots</label>
-  </div>
-  <hr />
-  <div>
-    <div>
+
+<div class="flex_sidebar">
+
+  <div class="top_row_sidebar">
+    <div id="side_menu_quad">
         <input id="radioButton" type="radio" name="location" value="1" />
-        <label for="radioButton">Quadrant 1</label>
     </div>
-    <div>
+    <div id="side_menu_quad">
       <input id="radioButton" type="radio" name="location" value="2" />
-      <label for="radioButton">Quadrant 2</label>
     </div>
-    <div>
+    <div id="side_menu_quad">
       <input id="radioButton" type="radio" name="location" value="3" />
-      <label for="radioButton">Quadrant 3</label>
     </div>
-    <div>
+  </div>
+
+  <div class="bot_row_sidebar">
+    <div id="side_menu_quad">
       <input id="radioButton" type="radio" name="location" value="4" />
-      <label for="radioButton">Quadrant 4</label>
     </div>
-    <div>
+    <div id="side_menu_quad">
       <input id="radioButton" type="radio" name="location" value="5" />
-      <label for="radioButton">Quadrant 5</label>
     </div>
-    <div>
+    <div id="side_menu_quad">
       <input id="radioButton" type="radio" name="location" value="6" />
-      <label for="radioButton">Quadrant 6</label><button type="submit">Submit</button>
     </div>
+  </div>
+
+</div>
+
+
+    <div>
+
+      <h3>Features</h3>
+
+      <div>
+        <input type="radio" name="quadrant" value="taskList_1" />
+        <label for="radioButton">Task List</label>
+      </div>
+
+      <div>
+        <input type="radio" name="quadrant" value="dots" />
+        <label for="radioButton">Dots</label>
+      </div>
+
+      <div>
+        <input type="radio" name="quadrant" value="blank" />
+        <label for="radioButton">Remove</label>
+      </div>
+
+    </div>
+
+
+    <div>
+      <button id="input_button" type="submit">Submit</button>
+    </div>
+
+
+  </form>

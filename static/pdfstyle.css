@@ -42,7 +42,7 @@ td {
   font-size: 1em;
   font-family: Arial;
   width: 33.33%;
-
+  vertical-align: top;
 }
 
 #box {

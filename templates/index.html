@@ -1,15 +1,11 @@
 {%   extends "base.html"   %}
+
+{% block navlinks %}
+<div><a></a></div>
+<div id="nav_button"><a id="nav_button_link" href="/logout">Logout</a></div>
+{% endblock navlinks %}
 {%  block content  %}
 
-
-{% if quadrants|length < 6 %}
-
-{% include 'snippetfiles/quadrant_radio.html' %}
-
-
-  </div>
-</form>
-{% endif %}
 
 {% if quadrants|length == 0 %}
 <p>
@@ -17,6 +13,7 @@
 </p>
 {% endif %}
 
+<div class="main">
 <!-- START THE MAIN FLEX BOX CONTAINER -->
 <div class="flex">
   <!--  TOP THREE ROWS OF THE APP -->
@@ -31,10 +28,6 @@
       <a class="box" href="http://127.0.0.1:5000/bn?quad_id=1">
       {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
         </a>
-      <form method="post" action="/delete-quadrant">
-        <input type="submit" value="delete" />
-        <input type="hidden" name="quadrant-id" value="{{quadrant.id}}"/>
-      </form>
       {% endif %}
       {% endfor %}
     </div>
@@ -47,10 +40,6 @@
       <a class="box" href="http://127.0.0.1:5000/bn?quad_id=2">
       {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
       </a>
-      <form method="post" action="/delete-quadrant">
-        <input type="submit" value="delete" />
-        <input type="hidden" name="quadrant-id" value="{{quadrant.id}}"/>
-      </form>
       {% endif %}
       {% endfor %}
     </div>
@@ -63,10 +52,6 @@
       <a class="box" href="http://127.0.0.1:5000/bn?quad_id=3">
       {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
       </a>
-      <form method="post" action="/delete-quadrant">
-        <input type="submit" value="delete" />
-        <input type="hidden" name="quadrant-id" value="{{quadrant.id}}"/>
-      </form>
       {% endif %}
       {% endfor %}
     </div>
@@ -87,10 +72,6 @@
       <a class="box" href="http://127.0.0.1:5000/bn?quad_id=4">
       {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
       </a>
-      <form method="post" action="/delete-quadrant">
-        <input type="submit" value="delete" />
-        <input type="hidden" name="quadrant-id" value="{{quadrant.id}}"/>
-      </form>
       {% endif %}
       {% endfor %}
     </div>
@@ -103,10 +84,6 @@
       <a class="box" href="http://127.0.0.1:5000/bn?quad_id=5">
       {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
       </a>
-      <form method="post" action="/delete-quadrant">
-        <input type="submit" value="delete" />
-        <input type="hidden" name="quadrant-id" value="{{quadrant.id}}"/>
-      </form>
       {% endif %}
       {% endfor %}
     </div>
@@ -119,20 +96,23 @@
       <a class="box" href="http://127.0.0.1:5000/bn?quad_id=6">
       {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
       </a>
-      <form method="post" action="/delete-quadrant">
-        <input type="submit" value="delete" />
-        <input type="hidden" name="quadrant-id" value="{{quadrant.id}}"/>
-      </form>
       {% endif %}
       {% endfor %}
     </div>
 
     </div>
-</div>
 
     <form id="form" action="/pdf_template" method="post">
       <input id="download_button" type="submit" value="Download to PDF">
     </form>
+
+</div>
+
+<div class="sidebar_menu">
+{% include 'snippetfiles/quadrant_radio.html' %}
+</div>
+</div>
+
 
 
 {%  endblock  %}

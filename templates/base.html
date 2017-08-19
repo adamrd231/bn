@@ -22,8 +22,10 @@
 
     <div class="bar_container">
       <div class="navbar">
+        {% block navlinks %}
         <div id="nav_button"><a id="nav_button_link" href="http://127.0.0.1:5000/">HOME</a></div>
         <div id="nav_button"><a id="nav_button_link" href="/logout">Logout</a></div>
+        {% endblock navlinks %}
       </div>
       {% endblock header %}
 

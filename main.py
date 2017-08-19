@@ -1,6 +1,6 @@
 from flask import Flask, request, redirect, render_template, session, flash, make_response
 from flask_sqlalchemy import SQLAlchemy
-from flask_weasyprint import HTML, render_pdf
+from flask_weasyprint import HTML, CSS, render_pdf
 
 
 
@@ -104,6 +104,7 @@ def index():
 
     user = User.query.filter_by(email=session['email']).first()
     tasks = Task.query.filter_by(user_id=user.id, completed=False).all()
+    quadrants = Quadrant.query.filter_by(owner_id=user.id).all()
 
 
     if request.method == 'POST':
@@ -121,8 +122,6 @@ def index():
             db.session.add(new_quadrant)
             db.session.commit()
 
-
-    if (user):
         quadrants = Quadrant.query.filter_by(owner_id=user.id).all()
 
         return render_template('index.html',
@@ -131,7 +130,9 @@ def index():
                 tasks=tasks)
     else:
         return render_template('index.html',
-                user=user,)
+                user=user,
+                quadrants=quadrants,
+                tasks=tasks)
 
 
 #THIS ROUTE BRINGS THE USER TO THE TASKS PAGE, FILTERED BY WHICH QUADRANT THEY CLICK INTO
@@ -153,6 +154,7 @@ def bn():
 
     #CHECK WHICH QUADRANT THE USER CLICKED INTO
     if (user.id):
+        tasks = Task.query.filter_by(user_id=user.id, quad_id=quad_id, completed=False).all()
         return render_template('bn.html',
                         title="Bare Necessity",
                         user=user,
@@ -166,20 +168,16 @@ def bn():
 #PRINT YOUR BN!
 @app.route('/pdf_template', methods=['POST', 'GET'])
 def pdf_templates():
+
     owner = User.query.filter_by(email=session['email']).first()
-    tasks = Task.query.filter_by(completed=False, owner=owner).all()
+    tasks = Task.query.filter_by(completed=False, user_id=owner.id).all()
+
+
     html = render_template('pdf_template.html',
-                                owner = owner,
                                 tasks=tasks,
                                 )
+
     return render_pdf(HTML(string=html))
-
-
-#LOGS USER OF OF THE SESSION
-@app.route('/logout')
-def logout():
-    del session['email']
-    return redirect('/')
 
 
 #REGISTER USERS
@@ -209,7 +207,11 @@ def register():
     return render_template('register.html')
 
 
-
+#LOGS USER OF OF THE SESSION
+@app.route('/logout')
+def logout():
+    del session['email']
+    return redirect('/')
 
 
 #######################
