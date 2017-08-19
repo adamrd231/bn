@@ -169,11 +169,14 @@ def bn():
 @app.route('/pdf_template', methods=['POST', 'GET'])
 def pdf_templates():
 
-    owner = User.query.filter_by(email=session['email']).first()
-    tasks = Task.query.filter_by(completed=False, user_id=owner.id).all()
+    user = User.query.filter_by(email=session['email']).first()
+    tasks = Task.query.filter_by(user_id=user.id, completed=False).all()
+    quadrants = Quadrant.query.filter_by(owner_id=user.id).all()
 
 
     html = render_template('pdf_template.html',
+                                user=user,
+                                quadrants=quadrants,
                                 tasks=tasks,
                                 )
 

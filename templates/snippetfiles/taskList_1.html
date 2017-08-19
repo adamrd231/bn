@@ -2,8 +2,10 @@
 
   <!-- THIS LOGIC SHOWS ALL THE TASKS THAT HAVE A MATCHING QUAD_ID -->
   <!-- FOR LOOP TO RUN THROUGH TASKS, CHECK IF MATCH -->
+<a class="box" href="http://127.0.0.1:5000/bn?quad_id={{quadrant.location}}">
   {% for task in tasks %}
     {% if task.quad_id == quadrant.location %}
       <div class="home_tasks">{{task.name}}</div>
     {%endif%}
   {%endfor%}
+</a>

@@ -16,12 +16,10 @@
 
 
 table {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
   width: 100%;
   border-collapse: collapse;
   vertical-align: top;
+  box-sizing: border-box;
 
 }
 
@@ -39,10 +37,13 @@ tr {
 
 
 td {
+
   font-size: 1em;
   font-family: Arial;
-  width: 33.33%;
   vertical-align: top;
+  border: .1em solid black;
+
+  border-collapse: collapse;
 }
 
 #box {
@@ -50,18 +51,23 @@ td {
     vertical-align: top;
 }
 
+#dots {
 
-.border_right_bottom {
-  border-right: .001em solid black;
-  border-bottom: .001em solid black;
+}
+
+#dots_png {
+  display: block;
+  padding: 0%;
+  height: 5in;
+  width: 100%;
+  margin:auto;
+  margin-bottom: 0;
+  margin-top: .25in;
+  z-index: -100;
 }
 
 
-.border_right {
-  border-right: .001em solid black;
-}
-
-
-.border_top {
-  border-top: .001em solid black;
+.home_tasks {
+  color: black;
+  text-decoration: none;
 }

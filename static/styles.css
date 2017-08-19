@@ -16,6 +16,11 @@ a {
   text-decoration: none;
 }
 
+h3 {
+  margin-top: 6%;
+  margin-bottom: 6%;
+}
+
 .container {
 
   flex:1;
@@ -89,13 +94,23 @@ h2 {
   border: .005em solid #333333;
   color: #333333;
   height: 100%;
+  box-sizing: border-box;
+}
 
+.blank {
+  height: 100%;
+  border: .005em solid #333333;
 }
 
 #dots {
-  background-image: url("http://rdconcepts.design/wp-content/uploads/2017/08/PersonalBN-02.png");
   height: 100%;
-  border-bottom: .01em solid #333333;
+  border: .005em solid #333333;
+
+}
+
+#dots_png {
+  max-width: 100%;
+
 }
 
 .box:hover {
@@ -108,6 +123,7 @@ h2 {
   flex-direction: column;
   flex: 1;
   background-color: white;
+
 }
 
 table {
@@ -229,9 +245,7 @@ table {
   background-color: black;
 }
 
-#radio {
-  color: black;
-}
+
 
 #delete_quadrant {
     width: 100%;
@@ -257,13 +271,14 @@ table {
   justify-content: space-between;
 }
 
+
+/*CSS STYLING FOR SIDEBAR MENU*/
 .sidebar_menu {
   width: 10%;
   padding: 1%;
   padding-top: 0%;
 }
 
-/*CSS STYLING FOR SIDEBAR MENU*/
 .flex_sidebar {
   display: flex;
   flex-direction: column;
@@ -280,10 +295,24 @@ table {
 #radioButton {
   height: 3.2em;
   width: 2em;
-  color: red !important;
 }
 
 
 #side_menu_quad {
+  border: 1px solid #333333;
+  background-color: #555555;
+  padding: 3%;
+}
+
+#radio {
+  color: black;
+}
+
+#sidebar_input_button {
+  box-shadow: none;
   border: 1px solid white;
+  color: white;
+  background-color: #333;
+  width: 100%;
+  margin: auto;
 }
