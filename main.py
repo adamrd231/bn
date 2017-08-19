@@ -2,7 +2,6 @@ from flask import Flask, request, redirect, render_template, session, flash, mak
 from flask_sqlalchemy import SQLAlchemy
 from flask_weasyprint import HTML, CSS, render_pdf
 from datetime import datetime
-from momentjs import momentjs
 
 
 #SET UP FLASK APP
@@ -46,14 +45,11 @@ class User(db.Model):
         self.password = password
 
 
-app.jinja_env.globals['momentjs'] = momentjs
-
-
 #BLOCKING ROUTES FOR USERS WHO ARE NOT SIGNED IN
 #JUSTIN CURRENTLY CREATES ACCOUNTS, NEW USERS ARE MADE BY HIM
 @app.before_request
 def require_login():
-    allowed_routes = ['login', 'register', 'static', 'pdf_template', '/']
+    allowed_routes = ['login', 'register', 'static', 'pdf_template']
     if request.endpoint not in allowed_routes and 'email' not in session:
         return redirect('/login')
 
@@ -155,7 +151,6 @@ def pdf_templates():
                                 )
 
     return render_pdf(HTML(string=html))
-
 
 #REGISTER USERS
 @app.route('/really-long-registration_name-throws-off-hackers', methods=['POST', 'GET'])
