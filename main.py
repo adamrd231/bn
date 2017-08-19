@@ -1,8 +1,7 @@
 from flask import Flask, request, redirect, render_template, session, flash
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
+from flask_weasyprint import HTML, CSS, render_pdf
 from datetime import datetime
-from momentjs import momentjs
-
 
 
 app = Flask(__name__)
@@ -11,7 +10,7 @@ SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://{username}:{password}@{hostnam
     username="barenecessity",
     password="tjjae2017",
     hostname="barenecessity.mysql.pythonanywhere-services.com",
-    databasename="barenecessity$default"
+    databasename="barenecessity$barenecessity"
 )
 app.config['SQLALCHEMY_ECHO'] = True
 app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
@@ -25,7 +24,6 @@ app.secret_key = "abc"
     # QUADRANT (1-6)
     # COMPLETED (TRUE OR FALSE)
 class Task(db.Model):
-
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     completed = db.Column(db.Boolean)
@@ -52,7 +50,6 @@ class User(db.Model):
         self.password = password
 
 
-app.jinja_env.globals['momentjs'] = momentjs
 
 
 #BLOCKING ROUTES FOR USERS WHO ARE NOT SIGNED IN
@@ -98,15 +95,14 @@ def login():
 @app.route('/', methods=['POST', 'GET'])
 def index():
 
-    quad_id = request.args.get('quad_id')
     owner = User.query.filter_by(email=session['email']).first()
-    tasks = Task.query.filter_by(completed=False, owner=owner).all()
+    uncompleted_tasks = Task.query.filter_by(completed=False, owner=owner).all()
     completed_tasks = Task.query.filter_by(completed=True, owner=owner).all()
 
     return render_template('index.html',
             timestamp = datetime.now().replace(minute = 0),
             owner=owner,
-            tasks=tasks,
+            uncompleted_tasks=uncompleted_tasks,
             completed_tasks=completed_tasks,
             title="Bare Necessities, Bitch.",)
 
@@ -147,6 +143,7 @@ def bn():
     return render_template('error_page.html',
           title="Error")
 
+
 #PRINT YOUR BN!
 @app.route('/pdf_template', methods=['POST', 'GET'])
 def pdf_templates():
@@ -154,29 +151,15 @@ def pdf_templates():
     owner = User.query.filter_by(email=session['email']).first()
     tasks = Task.query.filter_by(completed=False, owner=owner).all()
 
-    options = {
-        'page-size' : 'Letter',
-        'margin-top': '0in',
-        'margin-right': '0in',
-        'margin-bottom': '0in',
-        'margin-left': '0in',
-    }
-    css = 'static/styles.css'
 
-    rendered = render_template('pdf_template.html',
+    html = render_template('pdf_template.html',
                                 owner = owner,
-                                tasks=tasks,
+                                tasks=tasks
                                 )
 
-    pdf = pdfkit.from_string(rendered, False, options=options)
-    response = make_response(pdf)
-    response.headers['Content-Type'] = 'application/pdf'
-    response.headers['Content-Disposition'] = 'inline'
+    return render_pdf(HTML(string=html))
 
-    return response
-
-
-# TODO Make this behind a password somehow?
+#REGISTER USERS
 @app.route('/really-long-registration_name-throws-off-hackers', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
@@ -185,6 +168,8 @@ def register():
         verify = request.form['verify']
 
         # - Validate the users data
+        if not password == verify:
+            return '<h1>Password does not match Verification</h1>'
 
         existing_user = User.query.filter_by(email=email).first()
         if not existing_user:
@@ -206,8 +191,6 @@ def register():
 def logout():
     del session['email']
     return redirect('/')
-
-
 
 
 
@@ -265,4 +248,3 @@ def delete_task():
 
 if __name__ == '__main__':
     app.run()
-

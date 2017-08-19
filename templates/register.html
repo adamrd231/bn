@@ -1,19 +1,18 @@
-<!doctype html>
-<html>
-    <head>
-      <title>{{title}}</title>
-        <link rel="stylesheet" type="text/css" href="{{  url_for('static', filename='styles.css')  }}" />
-    </head>
-  <body>
+{%   extends "base.html"   %}
+{% block header %}
+<div class="header">
+  <div>
+    Bare Necessities3.0
+  </div>
+  <div>
+    {{timestamp}} - <a id="feedback_button" href="mailto:justin.rdconcepts@gmail.com">Leave Feedback</a>
+  </div>
+</div>
+{% endblock header %}
+{% block greeting %}
+{% endblock greeting %}
 
-    <div class="header">
-      <div>
-        Bare Necessities3.0
-      </div>
-      <div>
-        {{timestamp}} - <a id="feedback_button" href="mailto:justin.rdconcepts@gmail.com">Leave Feedback</a>
-      </div>
-    </div>
+{% block content %}
 
 <div class="overlay">
 
@@ -42,5 +41,4 @@
     <input id="input_button" type="submit" value="Register">
 </form>
 
-</body>
-</html>
+{% endblock content %}
