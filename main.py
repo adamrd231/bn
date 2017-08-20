@@ -46,7 +46,7 @@ class User(db.Model):
 class Task(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
+    name = db.Column(db.String(28))
     completed = db.Column(db.Boolean)
     quad_id = db.Column(db.Integer)
     user_id = db.Column(db.Integer)
@@ -105,34 +105,56 @@ def index():
     user = User.query.filter_by(email=session['email']).first()
     tasks = Task.query.filter_by(user_id=user.id, completed=False).all()
     quadrants = Quadrant.query.filter_by(owner_id=user.id).all()
+    sidebar_menu_variable = "sidebar_menu_hidden"
 
+    if request.method == 'GET':
+        sidebar_menu_variable = request.args.get('sb_menu')
 
     if request.method == 'POST':
-        quadrant_name = request.form['quadrant']
-        quadrant_location = request.form['location']
 
-        check_existing = Quadrant.query.filter_by(owner_id=user.id).all()
-        for check in check_existing:
-            if str(check.location) == quadrant_location:
-                db.session.delete(check)
+        if (request.form['quadrant']):
+            quadrant_name = request.form['quadrant']
+            quadrant_location = request.form['location']
+
+            check_existing = Quadrant.query.filter_by(owner_id=user.id).all()
+            for check in check_existing:
+                if str(check.location) == quadrant_location:
+                    db.session.delete(check)
+                    db.session.commit()
+
+            if (quadrant_name, user, quadrant_location):
+                new_quadrant = Quadrant(quadrant_name, user, quadrant_location)
+                db.session.add(new_quadrant)
                 db.session.commit()
 
-        if (quadrant_name, user, quadrant_location):
-            new_quadrant = Quadrant(quadrant_name, user, quadrant_location)
-            db.session.add(new_quadrant)
-            db.session.commit()
 
         quadrants = Quadrant.query.filter_by(owner_id=user.id).all()
 
         return render_template('index.html',
                 user=user,
                 quadrants=quadrants,
-                tasks=tasks)
+                tasks=tasks,
+                sidebar_menu_variable=sidebar_menu_variable)
     else:
         return render_template('index.html',
                 user=user,
                 quadrants=quadrants,
-                tasks=tasks)
+                tasks=tasks,
+                sidebar_menu_variable=sidebar_menu_variable)
+
+@app.route('/', methods=['POST'])
+def side_menu():
+
+    if request.method == 'POST':
+            sidebar_menu_variable = request.form['sb_menu']
+
+
+
+    return render_template('index.html',
+            user=user,
+            quadrants=quadrants,
+            tasks=tasks,
+            )
 
 
 #THIS ROUTE BRINGS THE USER TO THE TASKS PAGE, FILTERED BY WHICH QUADRANT THEY CLICK INTO

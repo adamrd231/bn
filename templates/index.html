@@ -102,13 +102,15 @@
 
     </div>
 
+  <div class="third_row">
     <form id="form" action="/pdf_template" method="post">
       <input id="download_button" type="submit" value="Download to PDF">
     </form>
+  </div>
 
 </div>
 
-<div class="sidebar_menu">
+<div class="{{sidebar_menu_variable}}">
 {% include 'snippetfiles/quadrant_radio.html' %}
 </div>
 </div>

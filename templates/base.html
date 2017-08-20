@@ -13,10 +13,10 @@
 
     <div class="header">
       <div>
-        Bare Necessities3.0
+        Bare Necessities1.0
       </div>
       <div>
-        {{timestamp}} - <a id="feedback_button" href="mailto:justin.rdconcepts@gmail.com">Leave Feedback</a>
+        <a id="feedback_button" href="mailto:justin.rdconcepts@gmail.com">Leave Feedback</a>
       </div>
     </div>
 
@@ -30,17 +30,37 @@
       {% endblock header %}
 
       {% block greeting %}
-      <div class="user_bar">
-        <h1>Hello, {{user.email}}</h1>
-        {% block flash_messages %}
-        {% with messages = get_flashed_messages(with_categories=True) %}
-            <ul>
-              {% for category,message in messages %}
-                <li class="{{category}}">{{message}}</li>
-              {% endfor %}
-            </ul>
-        {% endwith %}
-        {% endblock flash_messages %}
+      <div class="info_bar">
+        <div class="user_bar">
+          <div>
+            <h1>Hello, {{user.email}}</h1>
+          </div>
+          <div id="div_hamburger_open">
+            <form method='get'>
+              <div id="hamburger_open">
+                  <label for="radioButton">Open</label>
+                  <input id="radioButton" type="radio" name="sb_menu" value="sidebar_menu" />
+                  <label for="radioButton">Close</label>
+                  <input id="radioButton" type="radio" name="sb_menu" value="sidebar_menu_hidden" />
+              </div>
+              <div>
+                <button id="sidebar_input_button" type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div>
+          {% block flash_messages %}
+          {% with messages = get_flashed_messages(with_categories=True) %}
+              <ul>
+                {% for category,message in messages %}
+                  <li class="{{category}}">{{message}}</li>
+                {% endfor %}
+              </ul>
+          {% endwith %}
+          {% endblock flash_messages %}
+        </div>
+
       </div>
       {% endblock greeting %}
 
