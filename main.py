@@ -1,7 +1,6 @@
-from flask import Flask, request, redirect, render_template, session, flash, make_response
+from flask import Flask, request, redirect, render_template, session, flash, make_response, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_weasyprint import HTML, CSS, render_pdf
-
 
 
 #SET UP FLASK APP
@@ -38,7 +37,6 @@ class User(db.Model):
         self.email = email
         self.password = password
 
-
 #TASK USER CLASS, CURRENTLY FILTERS BY
     # USER ACCOUNT
     # QUADRANT (1-6)
@@ -58,13 +56,11 @@ class Task(db.Model):
         self.user_id = user_id
 
 
-
-
 #BLOCKING ROUTES FOR USERS WHO ARE NOT SIGNED IN
 #JUSTIN CURRENTLY CREATES ACCOUNTS, NEW USERS ARE MADE BY HIM
 @app.before_request
 def require_login():
-    allowed_routes = ['login', 'register', 'static', 'pdf_template', '/']
+    allowed_routes = ['login', 'register', 'static', 'pdf_template']
     if request.endpoint not in allowed_routes and 'email' not in session:
         return redirect('/login')
 
@@ -182,12 +178,14 @@ def pdf_templates():
 
 
     html = render_template('pdf_template.html',
+
                                 user=user,
                                 quadrants=quadrants,
                                 tasks=tasks,
                                 )
 
     return render_pdf(HTML(string=html))
+
 
 
 #REGISTER USERS

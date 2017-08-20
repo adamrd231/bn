@@ -16,11 +16,11 @@
 
 
 table {
+
   width: 100%;
   border-collapse: collapse;
   vertical-align: top;
   box-sizing: border-box;
-
 }
 
 
@@ -34,7 +34,6 @@ html {
 tr {
   height: 32.95em;
 }
-
 
 td {
   width: 33.33%;
@@ -71,4 +70,5 @@ td {
 .blank {
   width: 100%;
   height: 5in;
+
 }
