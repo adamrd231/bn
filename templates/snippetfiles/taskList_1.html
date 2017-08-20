@@ -1,0 +1,12 @@
+
+  <a class="task_list" href="/bn?quad_id={{quadrant.location}}">
+  <div id="pdf_box">
+
+      {% for task in tasks %}
+        {% if task.quad_id == quadrant.location %}
+          <div class="home_tasks">{{task.name}}</div>
+        {%endif%}
+      {%endfor%}
+
+  </div>
+  </a>

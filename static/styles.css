@@ -16,6 +16,11 @@ a {
   text-decoration: none;
 }
 
+h3 {
+  margin-top: 6%;
+  margin-bottom: 6%;
+}
+
 .container {
 
   flex:1;
@@ -41,24 +46,37 @@ a {
   flex:1;
 }
 
+/*NAVIGATION BAR STYLING FOR ALL PAGES*/
 .navbar {
+  margin-top: 4%;
+  margin-bottom: 0%;
   padding-left: 5%;
   padding-right: 5%;
   height: 4em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-content: center;
   flex:1;
-
+  align-self: auto;
 }
 
-h1 {
-  padding-left: 5%;
+#nav_button {
 }
 
-h2 {
-  padding-left: 5%;
-  font-size: 1em;
+#nav_button_link {
+  color: #dedede;
+  border: 1px solid #dedede;
+  padding: 7%;
+}
+
+/*USER BAR BELOW NAV BAR THAT GREETS/CONFRIMS USER ACCOUNT*/
+.user_bar {
+  background: #333333;
+  margin-left: 1%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .bn_tasks {
@@ -77,12 +95,7 @@ h2 {
   color: black;
 }
 
-.flex {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-}
+
 
 .top_row, .bottom_row {
   display: flex;
@@ -91,46 +104,47 @@ h2 {
 }
 
 .box {
-  flex: 1;
-  height: 49vh;
-  background-color: white;
-  border: .01em solid #333333;
+  border: .005em solid #333333;
   color: #333333;
-
+  height: 100%;
+  box-sizing: border-box;
 }
+
+.blank {
+  height: 100%;
+  border: .005em solid #333333;
+}
+
+#dots {
+  height: 100%;
+  width: 97%;
+  background-image: url('../static/assets/dots.svg');
+  background-size: cover;
+  background-repeat:repeat;
+}
+
 
 .box:hover {
   color: skyblue;
 }
 
-.home_task_container {
+.homepage_container {
+  height: 45em;
   display: flex;
   flex-direction: column;
   flex: 1;
   background-color: white;
+
 }
 
 table {
   width: 100%
 }
 
-.user_bar {
-  background: #333333;
-}
-
-#nav_button {
-  margin-top: 3%;
-  margin-bottom: 1%;
-}
-
-#nav_button_link {
-  color: #dedede;
-  border: 1px solid #dedede;
-  padding: 7%;
-}
-
 #feedback_button {
   color: #222222;
+  padding: 0;
+  color: blue;
 }
 
 #feedback_button:hover {
@@ -188,7 +202,12 @@ table {
 
 }
 
-
+.task_list {
+  border: .07em solid black;
+  border-collapse: collapse;
+  height: 100%;
+  padding: 2%;
+}
 
 #task_input {
   padding: 3%;
@@ -215,16 +234,106 @@ table {
   background: #333333;
   box-shadow: none;
   border: none;
-  border: .05em solid #dedede;
+  border: .5em solid #dedede;
   padding: 3%;
-  width: 20%;
-  margin-right: 40%;
-  margin-left: 40%;
-  margin-bottom: 2%;
   text-align: center;
   font-size: 1em;
+  flex: 1;
+  width: 100%;
+}
+
+#download_button:hover {
+  color: #333333;
+  background: white;
+  border: .5em solid white;
 }
 
 .overlay {
   background-color: black;
+}
+
+
+
+#delete_quadrant {
+    width: 100%;
+    padding: 1%;
+    color: white;
+    background-color: #333333;
+    border: none;
+    box-shadow: none;
+    z-index: 100;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  flex: 10;
+  border: .2em solid #333333;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+/*CSS STYLING FOR SIDEBAR MENU*/
+.sidebar_menu {
+  width: 10%;
+  padding: 1%;
+  padding-top: 0%;
+}
+
+.sidebar_menu_hidden {
+  display: none;
+}
+
+.flex_sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 6em;
+}
+
+.top_row_sidebar, .bot_row_sidebar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#radioButton {
+  height: 3.2em;
+  width: 2em;
+}
+
+
+#side_menu_quad {
+  border: 1px solid #333333;
+  background-color: #555555;
+  padding: 3%;
+}
+
+#radio {
+  color: black;
+}
+
+#sidebar_input_button {
+  box-shadow: none;
+  border: 1px solid white;
+  color: white;
+  background-color: #333;
+  width: 100%;
+  margin: auto;
+}
+
+#div_hamburger_open {
+  margin-top: 2%;
+  margin-right: 3%;
+}
+
+#hamburger_open {
+
 }
