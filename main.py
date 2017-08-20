@@ -1,7 +1,6 @@
 from flask import Flask, request, redirect, render_template, session, flash, make_response, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_weasyprint import HTML, CSS, render_pdf
-from datetime import datetime
 
 
 #SET UP FLASK APP
@@ -13,6 +12,31 @@ app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 app.secret_key = "thebarenecessities"
 
+
+class Quadrant(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    feature_name = db.Column(db.String(50))
+    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    location = db.Column(db.Integer)
+
+
+    def __init__(self, feature_name, owner, location):
+        self.feature_name = feature_name
+        self.owner = owner
+        self.location = location
+
+
+#USER ACCOUNT CLASS
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True)
+    password = db.Column(db.String(120))
+    quadrants = db.relationship('Quadrant', backref='owner')
+
+    def __init__(self, email, password):
+        self.email = email
+        self.password = password
+
 #TASK USER CLASS, CURRENTLY FILTERS BY
     # USER ACCOUNT
     # QUADRANT (1-6)
@@ -20,29 +44,16 @@ app.secret_key = "thebarenecessities"
 class Task(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
+    name = db.Column(db.String(28))
     completed = db.Column(db.Boolean)
-    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     quad_id = db.Column(db.Integer)
-    created = db.Column(db.DateTime)
+    user_id = db.Column(db.Integer)
 
-    def __init__(self, name, owner, quad_id):
+    def __init__(self, name, quad_id, user_id):
         self.name = name
         self.completed = False
-        self.created  = datetime.utcnow()
-        self.owner = owner
         self.quad_id = quad_id
-
-#USER ACCOUNT CLASS
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True)
-    password = db.Column(db.String(120))
-    tasks = db.relationship('Task', backref='owner')
-
-    def __init__(self, email, password):
-        self.email = email
-        self.password = password
+        self.user_id = user_id
 
 
 #BLOCKING ROUTES FOR USERS WHO ARE NOT SIGNED IN
@@ -83,54 +94,74 @@ def login():
     return render_template('login.html')
 
 
-
 #HOME PAGE ROUTE, SHOWS THE DASHBOARD FOR THE TASK MANAGEMENT APP
 @app.route('/', methods=['POST', 'GET'])
 def index():
 
-    owner = User.query.filter_by(email=session['email']).first()
-    uncompleted_tasks = Task.query.filter_by(completed=False, owner=owner).all()
-    completed_tasks = Task.query.filter_by(completed=True, owner=owner).all()
+    user = User.query.filter_by(email=session['email']).first()
+    tasks = Task.query.filter_by(user_id=user.id, completed=False).all()
+    quadrants = Quadrant.query.filter_by(owner_id=user.id).all()
 
-    return render_template('index.html',
-            timestamp = datetime.now().replace(minute = 0),
-            owner=owner,
-            uncompleted_tasks=uncompleted_tasks,
-            completed_tasks=completed_tasks,
-            title="Bare Necessities, Bitch.",)
+    sidebar_menu_variable = request.args.get('sb_menu')
+
+    if request.method == 'POST':
+
+        if (request.form['quadrant']):
+            quadrant_name = request.form['quadrant']
+            quadrant_location = request.form['location']
+
+            check_existing = Quadrant.query.filter_by(owner_id=user.id).all()
+            for check in check_existing:
+                if str(check.location) == quadrant_location:
+                    db.session.delete(check)
+                    db.session.commit()
+
+            if (quadrant_name, user, quadrant_location):
+                new_quadrant = Quadrant(quadrant_name, user, quadrant_location)
+                db.session.add(new_quadrant)
+                db.session.commit()
+
+
+        quadrants = Quadrant.query.filter_by(owner_id=user.id).all()
+
+        return render_template('index.html',
+                user=user,
+                quadrants=quadrants,
+                tasks=tasks,
+                sidebar_menu_variable=sidebar_menu_variable)
+    else:
+        return render_template('index.html',
+                user=user,
+                quadrants=quadrants,
+                tasks=tasks,
+                sidebar_menu_variable=sidebar_menu_variable)
+
 
 
 #THIS ROUTE BRINGS THE USER TO THE TASKS PAGE, FILTERED BY WHICH QUADRANT THEY CLICK INTO
 @app.route('/bn', methods=['POST', 'GET'])
 def bn():
 
-    owner = User.query.filter_by(email=session['email']).first()
-    tasks = Task.query.filter_by(completed=False, owner=owner).all()
-    completed_tasks = Task.query.filter_by(completed=True, owner=owner).all()
     quad_id = request.args.get('quad_id')
+    user = User.query.filter_by(email=session['email']).first()
+    tasks = Task.query.filter_by(user_id=user.id, quad_id=quad_id, completed=False).all()
+
 
     #IF THE USER WANTS TO CREATE A NEW TASK
     if request.method == 'POST':
+
         task_name = request.form['task']
-        new_task = Task(task_name, owner, quad_id)
+        new_task = Task(task_name, quad_id, user.id)
         db.session.add(new_task)
         db.session.commit()
 
     #CHECK WHICH QUADRANT THE USER CLICKED INTO
-    if (quad_id):
-
-        #USER THE OWNER ACCOUNT SIGNED IN TO ONLY FILTER ONLY THEIR TASKS
-        #FILTER BY COMPLETED TRUE VS FALSE TO SHOW BOTH CATEGORIES.
-        #USE THE QUAD_ID VARIABLE TO FILTER THE TASKS
-        quad_tasks = Task.query.filter_by(quad_id=quad_id, owner=owner, completed=False).all()
-        completed_quad_tasks = Task.query.filter_by(quad_id=quad_id, owner=owner, completed=True).all()
-
+    if (user.id):
+        tasks = Task.query.filter_by(user_id=user.id, quad_id=quad_id, completed=False).all()
         return render_template('bn.html',
                         title="Bare Necessity",
-                        owner=owner,
-                        tasks=quad_tasks,
-                        quad_id=quad_id,
-                        completed_quad_tasks=completed_quad_tasks,)
+                        user=user,
+                        tasks=tasks,)
 
         #TODO create a 404 / error page to land on
     return render_template('error_page.html',
@@ -141,16 +172,21 @@ def bn():
 @app.route('/pdf_template', methods=['POST', 'GET'])
 def pdf_templates():
 
-    owner = User.query.filter_by(email=session['email']).first()
-    tasks = Task.query.filter_by(completed=False, owner=owner).all()
+    user = User.query.filter_by(email=session['email']).first()
+    tasks = Task.query.filter_by(user_id=user.id, completed=False).all()
+    quadrants = Quadrant.query.filter_by(owner_id=user.id).all()
 
 
     html = render_template('pdf_template.html',
-                                owner = owner,
-                                tasks=tasks
+
+                                user=user,
+                                quadrants=quadrants,
+                                tasks=tasks,
                                 )
 
     return render_pdf(HTML(string=html))
+
+
 
 #REGISTER USERS
 @app.route('/really-long-registration_name-throws-off-hackers', methods=['POST', 'GET'])
@@ -184,9 +220,6 @@ def register():
 def logout():
     del session['email']
     return redirect('/')
-
-
-
 
 
 #######################
@@ -223,19 +256,15 @@ def un_complete_task():
     return redirect(url)
 
 #REMOVE TASK FROM THE DATABASE
-@app.route('/delete-task', methods=['POST'])
+@app.route('/delete-quadrant', methods=['POST'])
 def delete_task():
 
-    task_id = int(request.form['task-id'])
-    task = Task.query.get(task_id)
-    task.completed = True
-    db.session.delete(task)
+    quadrant_id = int(request.form['quadrant-id'])
+    quadrant = Quadrant.query.get(quadrant_id)
+    db.session.delete(quadrant)
     db.session.commit()
-    url_id = task.quad_id
 
-    url = '/bn?quad_id=' + str(url_id)
-
-    return redirect(url)
+    return redirect('/')
 
 
 

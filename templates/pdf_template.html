@@ -11,74 +11,85 @@
   <table>
     <tr>
       <!-- QUADRANT # 1 -->
-      <td class="border_right_bottom">
+      <td>
               <div id="box">
-                {%for task in tasks %}
-                  {% if task.quad_id == 1  %}
-                    <div>{{task.name}}</div>
-                  {%endif%}
-                {%endfor%}
+                {% for quadrant in quadrants %}
+                {% if quadrant.location == 1 %}
+
+                {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
+
+                {% endif %}
+                {% endfor %}
               </div>
       </td>
 <!-- QUADRANT # 2 -->
-      <td class="border_right_bottom">
+      <td>
               <div id="box">
-                {%for task in tasks %}
-                  {% if task.quad_id == 2  %}
-                    <div>{{task.name}}</div>
-                  {%endif%}
-                {%endfor%}
+                {% for quadrant in quadrants %}
+                {% if quadrant.location == 2 %}
+
+                {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
+
+                {% endif %}
+                {% endfor %}
+
               </div>
       </td>
 <!-- QUADRANT # 3 -->
       <td>
               <div id="box">
-                {%for task in tasks %}
-                  {% if task.quad_id == 3  %}
-                    <div>{{task.name}}</div>
-                  {%endif%}
-                {%endfor%}
+                {% for quadrant in quadrants %}
+                {% if quadrant.location == 3 %}
+
+                {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
+
+                {% endif %}
+                {% endfor %}
+
               </div>
       </td>
     </tr>
 
 
-
-
     <tr>
 <!-- QUADRANT # 4 -->
-      <td class="border_right">
+      <td>
             <div id="box">
-              {%for task in tasks %}
-                {% if task.quad_id == 4  %}
-                  <div>{{task.name}}</div>
-                {%endif%}
-              {%endfor%}
+              {% for quadrant in quadrants %}
+              {% if quadrant.location == 4 %}
+
+              {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
+
+              {% endif %}
+              {% endfor %}
             </div>
       </td>
 <!-- QUADRANT # 5 -->
-      <td class="border_right">
+      <td>
           <div id="box">
-              {%for task in tasks %}
-                {% if task.quad_id == 5  %}
-                  <div>{{task.name}}</div>
-                {%endif%}
-              {%endfor%}
+            {% for quadrant in quadrants %}
+            {% if quadrant.location == 5 %}
+
+            {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
+
+            {% endif %}
+            {% endfor %}
           </div>
 
 
       </td>
 <!-- QUADRANT # 6 -->
-      <td class="border_top">
+      <td>
             <div id="box">
-              {%for task in tasks %}
-                {% if task.quad_id == 6  %}
-                  <div>{{task.name}}</div>
-                {%endif%}
-              {%endfor%}
+              {% for quadrant in quadrants %}
+              {% if quadrant.location == 6 %}
+
+              {% include 'snippetfiles/%s.html' % quadrant.feature_name %}
+
+              {% endif %}
+              {% endfor %}
             </div>
       </td>
-
-    </tr>
+  </tr>
   </table>
 </page>

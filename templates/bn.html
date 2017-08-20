@@ -1,10 +1,7 @@
 {%   extends "base.html"   %}
 {%  block content  %}
 
-  <h1>Quadrant {{quad_id}}</h1>
-
   <div class="bn_tasks">
-
 
   {% if tasks|length < 31 %}
   <form method='post'>
@@ -14,6 +11,9 @@
     <input id="task_input" type="submit" value="Add Task" />
   </form>
   <ul>
+    {% endif %}
+
+
     {%for task in tasks %}
     <li class="task_flex"><div id="task_id">{{task.name}}</div>
       <form method="POST" action="/complete-task">
@@ -24,44 +24,12 @@
           <input class="top_input" id="task_input" type="submit" value="DELETE" />
           <input id="task_input" type="hidden" name="task-id" value="{{task.id}}" />
       </form> -->
-
     </li>
     {% endfor %}
+
   </ul>
 
-  {%  else   %}
- {%for task in tasks %}
- <li class="task_flex"><div id="task_id">{{task.name}}</div>
-   <form method="POST" action="/complete-task">
-       <input id="done_button" class="top_input" type="submit" value="DONE" />
-       <input id="done_button" type="hidden" name="task-id" value="{{task.id}}" />
-   </form>
-   <!-- <form method="POST" action="/delete-task">
-       <input class="top_input" id="task_input" type="submit" value="DELETE" />
-       <input id="task_input" type="hidden" name="task-id" value="{{task.id}}" />
-   </form> -->
 
- </li>
- {% endfor %}
-</ul>
-  {% endif %}
-
-  <!-- <h2>COMPLETED</h2>
-    <ul>
-      {% for task in completed_quad_tasks %}
-      <li>
-          {{task.name}}
-          <form method="POST" action="/delete-task">
-              <input class="top_input" id="task_input" type="submit" value="DEL" />
-              <input id="task_input" type="hidden" name="task-id" value="{{task.id}}" />
-          </form>
-          <form method="POST" action="/un-complete-task">
-              <input class="top_input" id="task_input" type="submit" value="UNDO" />
-              <input id="task_input" type="hidden" name="task-id" value="{{task.id}}" />
-          </form>
-      </li>
-      {% endfor %}
-    </ul> -->
 </div>
 
   {%  endblock  %}
