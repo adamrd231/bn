@@ -1,3 +1,5 @@
+V1.0 MVP
+
 # BARE NECESSITY
 A Productivity Tool
                                                      
