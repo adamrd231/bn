@@ -105,10 +105,8 @@ def index():
     user = User.query.filter_by(email=session['email']).first()
     tasks = Task.query.filter_by(user_id=user.id, completed=False).all()
     quadrants = Quadrant.query.filter_by(owner_id=user.id).all()
-    sidebar_menu_variable = "sidebar_menu_hidden"
 
-    if request.method == 'GET':
-        sidebar_menu_variable = request.args.get('sb_menu')
+    sidebar_menu_variable = request.args.get('sb_menu')
 
     if request.method == 'POST':
 
@@ -142,19 +140,6 @@ def index():
                 tasks=tasks,
                 sidebar_menu_variable=sidebar_menu_variable)
 
-@app.route('/', methods=['POST'])
-def side_menu():
-
-    if request.method == 'POST':
-            sidebar_menu_variable = request.form['sb_menu']
-
-
-
-    return render_template('index.html',
-            user=user,
-            quadrants=quadrants,
-            tasks=tasks,
-            )
 
 
 #THIS ROUTE BRINGS THE USER TO THE TASKS PAGE, FILTERED BY WHICH QUADRANT THEY CLICK INTO
