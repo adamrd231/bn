@@ -23,8 +23,7 @@ A Productivity Tool
 
 
 <hr>
-<h2>MVP Mobile First Design | Web Application</h2>
-<h4>HOW TO USE THE APP</h4>
+## MVP Mobile First Design | Web Application
 <hr>
 https://xd.adobe.com/view/484e32a6-4865-4c8d-8fd2-d3075a29c433/
 <hr>
