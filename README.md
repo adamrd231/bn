@@ -19,11 +19,9 @@ A Productivity Tool
 <hr>
 
 ### GETTING STARTED
-There is nothing to install, our web application gives you the freedom to print your BN anywhere.
-Email justin.rdconcepts@gmail.com in order to register for an account, due  to limited server space accounts are limited.
+##### There is nothing to install, our web application gives you the freedom to print your BN anywhere.
+##### Email justin.rdconcepts@gmail.com in order to register for an account, due  to limited server space accounts are limited.
 
-****Request a Login Account @ justin.rdconcepts@gmail.com
-<hr/>
 
 <hr>
 <h2>MVP Mobile First Design | Web Application</h2>
