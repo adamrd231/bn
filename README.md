@@ -27,8 +27,11 @@ Email justin.rdconcepts@gmail.com in order to register for an account, due  to l
 <pre>barenecessity.pythonanywhere.com</pre>
 <hr/>
 
-### CONTRIBUTORS
-##### Please check back for a list of upcoming features.
+<hr>
+<h2>MVP Mobile First Design | Web Application</h2>
+<h4>HOW TO USE THE APP</h4>
+<img src="http://rdconcepts.design/wp-content/uploads/2017/08/BareReadMe-01-1.png"/>
+
 <ol>
   <li>Fork it (https://github.com/yourname/yourproject/rickAndMortyBranch(exampleForkName)</li>
   <li>Create your feature branch (git checkout -b feature/battleAxePocketMorty)</li>
@@ -37,26 +40,23 @@ Email justin.rdconcepts@gmail.com in order to register for an account, due  to l
   <li>Create a new Pull Request</li>
 </ol>
 
-### AUTHORS
-##### Adam Reed | adam.rdconcepts@gmail.com
-##### Justin Reed | justin.rdconcepts@gmail.com
-
-### INSPIRATION
-
-##### Tim Ferriss | Author/Podcaster/Teacher
-##### Marie Kondo | The Life Changing Magic of Tidying Up
-##### 5-S Methodology
-
-
 <img style="width=25" src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-01-1.png"/>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/icons-02.png"/>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-05.png"/>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/icons-03.png"/>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-04.png"/>
 
-<hr>
-<h2>MVP Mobile First Design | Web Application</h2>
-<h4>HOW TO USE THE APP</h4>
-<img src="http://rdconcepts.design/wp-content/uploads/2017/08/BareReadMe-01-1.png"/>
+### AUTHORS
+##### Adam Reed | adam.rdconcepts@gmail.com
+##### Justin Reed | justin.rdconcepts@gmail.com
+
+### CONTRIBUTORS
+##### Please check back for a list of upcoming features.
+
+### INSPIRATION
+
+##### Tim Ferriss | Author/Podcaster/Teacher
+##### Marie Kondo | The Life Changing Magic of Tidying Up
+##### 5-S Methodology
 
 
