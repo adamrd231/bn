@@ -48,7 +48,7 @@ Email justin.rdconcepts@gmail.com in order to register for an account, due  to l
 ##### 5-S Methodology
 
 
-<img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-01-1.png"/>
+<img style="width=25" src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-01-1.png"/>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/icons-02.png"/>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/code_icons-05.png"/>
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/icons-03.png"/>
@@ -57,6 +57,6 @@ Email justin.rdconcepts@gmail.com in order to register for an account, due  to l
 <hr>
 <h2>MVP Mobile First Design | Web Application</h2>
 <h4>HOW TO USE THE APP</h4>
-<img src="http://rdconcepts.design/wp-content/uploads/2017/08/BareReadMe-01.png"/>
+<img src="http://rdconcepts.design/wp-content/uploads/2017/08/BareReadMe-01-1.png"/>
 
 
