@@ -14,7 +14,6 @@ A Productivity Tool
   <li>Carry With you to capture awesome ideas</li>
 </ul>
 
-<img src="http://rdconcepts.design/wp-content/uploads/2017/08/Adams-BN-02.png"/>
 
 <hr>
 
@@ -26,6 +25,10 @@ A Productivity Tool
 <hr>
 <h2>MVP Mobile First Design | Web Application</h2>
 <h4>HOW TO USE THE APP</h4>
+<hr>
+# https://xd.adobe.com/view/484e32a6-4865-4c8d-8fd2-d3075a29c433/
+<hr>
+
 <img src="http://rdconcepts.design/wp-content/uploads/2017/08/BareReadMe-01-2.png"/>
 
 <ol>
