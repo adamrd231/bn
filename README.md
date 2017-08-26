@@ -57,6 +57,6 @@ Email justin.rdconcepts@gmail.com in order to register for an account, due  to l
 <hr>
 <h2>MVP Mobile First Design | Web Application</h2>
 <h4>HOW TO USE THE APP</h4>
-<img src="http://rdconcepts.design/wp-content/uploads/2017/08/BareReadMe.png"/>
+<img src="http://rdconcepts.design/wp-content/uploads/2017/08/BareReadMe-01.png"/>
 
 
