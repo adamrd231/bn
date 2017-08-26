@@ -26,7 +26,7 @@ A Productivity Tool
 <hr>
 <h2>MVP Mobile First Design | Web Application</h2>
 <h4>HOW TO USE THE APP</h4>
-<img src="http://rdconcepts.design/wp-content/uploads/2017/08/BareReadMe-01-1.png"/>
+<img src="http://rdconcepts.design/wp-content/uploads/2017/08/BareReadMe-01-2.png"/>
 
 <ol>
   <li>Fork it (https://github.com/yourname/yourproject/rickAndMortyBranch(exampleForkName)</li>
